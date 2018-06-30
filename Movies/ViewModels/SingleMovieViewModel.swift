@@ -9,7 +9,7 @@
 import Foundation
 
 protocol SingleMovieViewModelType {
-    var movie: MovieModel {get}
+    var item: ItemModel {get}
     weak var viewDelegate: MovieDetailsDelegate? {get set}
 }
 
@@ -18,53 +18,44 @@ protocol EditMoviePlotDelegate:NSObjectProtocol{
 }
 
 class SingleMovieViewModel:NSObject, SingleMovieViewModelType{
-    var movie: MovieModel
+    var item: ItemModel
     let restAPI: RestAPI
     
     weak var viewDelegate: MovieDetailsDelegate?
     
-    init(service: RestAPI, movie: MovieModel) {
+    init(service: RestAPI, item: ItemModel) {
         self.restAPI = service
-        self.movie = movie
+        self.item = item
     }
     
     var title: String {
-        return movie.name.uppercased()
+        return item.name.uppercased()
     }
     
     var year: String {
-        return movie.price
+        return item.price
     }
     
     var plot: String{
-        if let plot = movie.plot{
-            return plot + "\n"
-        }
-        return "Plot is not available for this movie...\n"
+        return "Unknown"
     }
     
     var genre: String {
-        if let genre = movie.genre{
-            return genre
-        }
         return "Unknown"
     }
     
     var director: String? {
-        if let director = movie.director{
-            return director
-        }
         return "Unknown"
     }
     
     var imageUrl: URL? {
-        return URL(string: movie.thumbnail)
+        return URL(string: item.thumbnail)
     }
     
     func fetchMovieDetails(){
-        restAPI.fetchMovieModel(movieID: movie.id, completion:{ [weak self] (movie) in
-            if let newMovie = movie{
-                self?.movie = newMovie
+        restAPI.fetchItemDetails(itemID: item.id, completion:{ [weak self] (item) in
+            if let newItem = item{
+                self?.item = newItem
                 self?.viewDelegate?.searchResultsDidChanged()
             }
         })
@@ -73,10 +64,7 @@ class SingleMovieViewModel:NSObject, SingleMovieViewModelType{
 
 extension SingleMovieViewModel:EditMoviePlotDelegate{
     func saveEdited(plot: String){
-        if let updatedMovie = MovieModel.updatePlot(movieID: movie.id, newPlot: plot){
-            self.movie = updatedMovie
-            viewDelegate?.moviePlotChanged()
-        }
+        
     }
 }
 

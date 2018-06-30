@@ -10,7 +10,7 @@ import UIKit
 
 protocol MovieListDelegate:NSObjectProtocol {
     func movieListDidChanged(success:Bool)
-    func loadMovieDetails(movie: MovieModel)
+    func loadMovieDetails(item: ItemModel)
 }
 
 class MovieListViewController: UIViewController{
@@ -126,8 +126,8 @@ extension MovieListViewController: MovieListDelegate{
         }
     }
     
-    func loadMovieDetails(movie: MovieModel) {
-        let smvm = SingleMovieViewModel(service: CombinedMovieAPI(), movie: movie)
+    func loadMovieDetails(item: ItemModel) {
+        let smvm = SingleMovieViewModel(service: CombinedMovieAPI(),item:item)
         let vc = MovieDetailsViewController(viewModel: smvm)
         self.navigationController?.pushViewController(vc, animated: true)
     }

@@ -12,21 +12,21 @@ import AERecord
 
 class OmdbAPI:RestAPI{
     
-    let apiKey = "bf90cf2e"
-    let baseUrl = "http://www.omdbapi.com"
+    //let apiKey = "bf90cf2e"
+    //let baseUrl = "http://www.omdbapi.com"
     
-    let baseUrl2 = "http://api.walmartlabs.com/v1/search"
-    let apiKey2 = "24reqa2swxq55ufw8mxs4az5"
+    let baseUrl = "http://api.walmartlabs.com/v1/search"
+    let apiKey = "24reqa2swxq55ufw8mxs4az5"
     
-    func fetchMovieModel(movieID: String, completion: @escaping ((MovieModel?) -> Void)) -> Void{
+    func fetchItemDetails(itemID: String, completion: @escaping ((ItemModel?) -> Void)) {
         guard let url = URL(string: baseUrl) else {
             completion(nil)
             return
         }
-        
+        // TODO change this call or remove it
         Alamofire.request(url,
                           method: .get,
-                          parameters: ["i":movieID,"apikey":apiKey])
+                          parameters: ["i":itemID,"apikey":apiKey])
             .validate()
             .responseJSON { response in
                 guard response.result.isSuccess else {
@@ -35,9 +35,9 @@ class OmdbAPI:RestAPI{
                     return
                 }
                 if  let value = response.result.value as? [String: Any],
-                    let movie = MovieModel.createFrom(json: value){
+                    let item = ItemModel.createFrom(json: value){
                     try? AERecord.Context.main.save()
-                    completion(movie)
+                    completion(item)
                     return
                 }
                 else {
@@ -47,19 +47,14 @@ class OmdbAPI:RestAPI{
         }
     }
     
-    /*
-    Alamofire.request(url,
-    method: .get,
-    parameters: ["query":search, "format":"json", "apikey":apiKey] )
-    */
-    func fetchMovieModelList(search: String, completion: @escaping (([MovieModel]?) -> Void)){
-        guard let url = URL(string: baseUrl2) else {
+    func fetchItemList(search: String, completion: @escaping (([ItemModel]?) -> Void)){
+        guard let url = URL(string: baseUrl) else {
             completion(nil)
             return
         }
         Alamofire.request(url,
                           method: .get,
-                          parameters: ["query":search, "format":"json", "apikey":apiKey2] )
+                          parameters: ["query":search, "format":"json", "apikey":apiKey] )
             .validate()
             .responseJSON { response in
                 guard response.result.isSuccess else {
@@ -70,15 +65,15 @@ class OmdbAPI:RestAPI{
                 //print("Response:",response)
                 if  let value = response.result.value as? [String: Any],
                     let results = value["items"] as? [[String: Any]] {
-                    print(results)
-                    let movies = results.map({ json -> MovieModel? in
-                        let movie = MovieModel.createFrom(json: json)
-                        print("movie:",movie)
-                        return movie
+                    //print(results)
+                    let items = results.map({ json -> ItemModel? in
+                        let item = ItemModel.createFrom(json: json)
+                        //print("movie:",item)
+                        return item
                     }).filter { $0 != nil } .map { $0! }
-                    print("movies:",movies)
+                    print("movies:",items)
                     try? AERecord.Context.main.save()
-                    completion(movies)
+                    completion(items)
                     return
                 }
                 else {

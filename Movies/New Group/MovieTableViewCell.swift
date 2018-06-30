@@ -37,11 +37,12 @@ class MovieTableViewCell: UITableViewCell {
         title.font = UIFont.systemFont(ofSize: 18)
         title.textColor = UIColor.black
         year.textColor = UIColor.darkGray
-        movieImage.layer.borderWidth = 1
+        // snippet for making the cell image round
+        /*movieImage.layer.borderWidth = 1
         movieImage.layer.masksToBounds = false
         movieImage.layer.borderColor = UIColor.black.cgColor
         movieImage.layer.cornerRadius = movieImage.frame.height/2
-        movieImage.clipsToBounds = true
+        movieImage.clipsToBounds = true*/
     }
     
     override func prepareForReuse() {
@@ -51,10 +52,10 @@ class MovieTableViewCell: UITableViewCell {
         movieImage.image = nil
     }
     
-    func setup(withMovie movie: MovieModel) {
-        title.text = movie.name
-        year.text = "(" + movie.price + ")"
-        if  let url = URL(string: movie.thumbnail) {
+    func setup(withMovie item: ItemModel) {
+        title.text = item.name
+        year.text = "(" + item.price + ")"
+        if  let url = URL(string: item.thumbnail) {
             movieImage.kf.setImage(with: url)
         }
     }

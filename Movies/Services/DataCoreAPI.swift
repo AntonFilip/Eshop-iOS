@@ -12,33 +12,33 @@ import CoreData
 
 class DataCoreAPI:RestAPI{
     
-    func fetchMovieModel(movieID: String, completion: @escaping ((MovieModel?) -> Void)) -> Void{
-        let request: NSFetchRequest<MovieModel> = MovieModel.fetchRequest()
+    func fetchItemDetails(itemID: String, completion: @escaping ((ItemModel?) -> Void)) -> Void{
+        let request: NSFetchRequest<ItemModel> = ItemModel.fetchRequest()
         let context = AERecord.Context.main
-        request.predicate = NSPredicate(format: "id == %@", movieID)
+        request.predicate = NSPredicate(format: "id == %@", itemID)
         
         guard let movie = try? context.fetch(request).first else{
-            print("Error while fetching movie with id",movieID)
+            print("Error while fetching item with id",itemID)
             completion(nil)
             return
         }
         completion(movie)
     }
     
-    func fetchMovieModelList(search: String, completion: @escaping (([MovieModel]?) -> Void)){
-        let request: NSFetchRequest<MovieModel> = MovieModel.fetchRequest()
+    func fetchItemList(search: String, completion: @escaping (([ItemModel]?) -> Void)){
+        let request: NSFetchRequest<ItemModel> = ItemModel.fetchRequest()
         let context = AERecord.Context.main
         request.predicate = NSPredicate(format: "title contains[c] %@", search)
         request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
         
-        guard let movies = try? context.fetch(request) else{
-            print("Error while fetching movies with title", search)
+        guard let items = try? context.fetch(request) else{
+            print("Error while fetching items with title", search)
             completion(nil)
             return
         }
         
-        if movies.count > 1 {
-            completion(movies)
+        if items.count > 1 {
+            completion(items)
         }
         else{
             completion(nil)

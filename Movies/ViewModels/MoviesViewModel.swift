@@ -12,7 +12,7 @@ import AERecord
 
 
 protocol MoviesViewModelType {
-    var movies: [MovieModel]? {get}
+    var items: [ItemModel]? {get}
     weak var viewDelegate: MovieListDelegate? {get set }
 }
 
@@ -24,9 +24,9 @@ class MoviesViewModel: MoviesViewModelType {
     
     weak var viewDelegate: MovieListDelegate?
     
-    var movies : [MovieModel]? = nil {
+    var items : [ItemModel]? = nil {
         didSet{
-            if movies != nil{
+            if items != nil{
                 viewDelegate?.movieListDidChanged(success: true)
             }
             else {
@@ -41,22 +41,22 @@ class MoviesViewModel: MoviesViewModelType {
     }
     
     func fetchMovies(){
-        restAPI.fetchMovieModelList(search:self.search, completion:{ [weak self] (movies) in
-            self?.movies = movies
+        restAPI.fetchItemList(search:self.search, completion:{ [weak self] (items) in
+            self?.items = items
         })
     }
     
-    func getMovie(at index: Int) -> MovieModel? {
-        return movies?[index]
+    func getMovie(at index: Int) -> ItemModel? {
+        return items?[index]
     }
     
     func numberOfMovies() -> Int {
-        return movies?.count ?? 0
+        return items?.count ?? 0
     }
     
     func didSelectRow(at index: Int) {
-        if let movie = movies?[index]{
-            self.viewDelegate?.loadMovieDetails(movie:movie)
+        if let item = items?[index]{
+            self.viewDelegate?.loadMovieDetails(item:item)
         }
     }
 }

@@ -10,6 +10,8 @@ import Foundation
 
 
 protocol RestAPI{
-    func fetchMovieModel(movieID:String, completion: @escaping ((MovieModel?) -> Void)) -> Void
-    func fetchMovieModelList(search: String, completion: @escaping (([MovieModel]?) -> Void))
+    
+    func fetchItemDetails(itemID:String, completion: @escaping ((ItemModel?) -> Void)) -> Void
+    
+    func fetchItemList(search: String, completion: @escaping (([ItemModel]?) -> Void))
 }

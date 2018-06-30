@@ -28,23 +28,23 @@ class CombinedMovieAPI:RestAPI{
         }
     }
     
-    func fetchMovieModel(movieID: String, completion: @escaping ((MovieModel?) -> Void)) -> Void{
+    func fetchItemDetails(itemID: String, completion: @escaping ((ItemModel?) -> Void)) -> Void{
         checkForConnection()
         if connectedToInternet{
-            self.onlineAPI.fetchMovieModel(movieID: movieID, completion: completion)
+            self.onlineAPI.fetchItemDetails(itemID: itemID, completion: completion)
         }
         else{
-            self.offlineAPI.fetchMovieModel(movieID: movieID, completion: completion)
+            self.offlineAPI.fetchItemDetails(itemID: itemID, completion: completion)
         }
     }
     
-    func fetchMovieModelList(search: String, completion: @escaping (([MovieModel]?) -> Void)){
+    func fetchItemList(search: String, completion: @escaping (([ItemModel]?) -> Void)){
         checkForConnection()
         if connectedToInternet{
-            self.onlineAPI.fetchMovieModelList(search: search, completion: completion)
+            self.onlineAPI.fetchItemList(search: search, completion: completion)
         }
         else{
-            self.offlineAPI.fetchMovieModelList(search: search, completion: completion)
+            self.offlineAPI.fetchItemList(search: search, completion: completion)
         }
     }
 }
