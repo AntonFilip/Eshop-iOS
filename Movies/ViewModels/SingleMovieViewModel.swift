@@ -29,11 +29,11 @@ class SingleMovieViewModel:NSObject, SingleMovieViewModelType{
     }
     
     var title: String {
-        return movie.title.uppercased()
+        return movie.name.uppercased()
     }
     
     var year: String {
-        return movie.year
+        return movie.price
     }
     
     var plot: String{
@@ -58,7 +58,7 @@ class SingleMovieViewModel:NSObject, SingleMovieViewModelType{
     }
     
     var imageUrl: URL? {
-        return URL(string: movie.poster)
+        return URL(string: movie.thumbnail)
     }
     
     func fetchMovieDetails(){

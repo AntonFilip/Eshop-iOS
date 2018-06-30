@@ -52,9 +52,9 @@ class MovieTableViewCell: UITableViewCell {
     }
     
     func setup(withMovie movie: MovieModel) {
-        title.text = movie.title
-        year.text = "(" + movie.year + ")"
-        if  let url = URL(string: movie.poster) {
+        title.text = movie.name
+        year.text = "(" + movie.price + ")"
+        if  let url = URL(string: movie.thumbnail) {
             movieImage.kf.setImage(with: url)
         }
     }

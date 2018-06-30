@@ -15,6 +15,9 @@ class OmdbAPI:RestAPI{
     let apiKey = "bf90cf2e"
     let baseUrl = "http://www.omdbapi.com"
     
+    let baseUrl2 = "http://api.walmartlabs.com/v1/search"
+    let apiKey2 = "24reqa2swxq55ufw8mxs4az5"
+    
     func fetchMovieModel(movieID: String, completion: @escaping ((MovieModel?) -> Void)) -> Void{
         guard let url = URL(string: baseUrl) else {
             completion(nil)
@@ -44,14 +47,19 @@ class OmdbAPI:RestAPI{
         }
     }
     
+    /*
+    Alamofire.request(url,
+    method: .get,
+    parameters: ["query":search, "format":"json", "apikey":apiKey] )
+    */
     func fetchMovieModelList(search: String, completion: @escaping (([MovieModel]?) -> Void)){
-        guard let url = URL(string: baseUrl) else {
+        guard let url = URL(string: baseUrl2) else {
             completion(nil)
             return
         }
         Alamofire.request(url,
                           method: .get,
-                          parameters: ["s":search,"apikey":apiKey] )
+                          parameters: ["query":search, "format":"json", "apikey":apiKey2] )
             .validate()
             .responseJSON { response in
                 guard response.result.isSuccess else {
@@ -61,12 +69,14 @@ class OmdbAPI:RestAPI{
                 }
                 //print("Response:",response)
                 if  let value = response.result.value as? [String: Any],
-                    let results = value["Search"] as? [[String: Any]] {
+                    let results = value["items"] as? [[String: Any]] {
+                    print(results)
                     let movies = results.map({ json -> MovieModel? in
                         let movie = MovieModel.createFrom(json: json)
+                        print("movie:",movie)
                         return movie
                     }).filter { $0 != nil } .map { $0! }
-                    
+                    print("movies:",movies)
                     try? AERecord.Context.main.save()
                     completion(movies)
                     return
@@ -77,5 +87,6 @@ class OmdbAPI:RestAPI{
                 }
         }
     }
+
     
 }
