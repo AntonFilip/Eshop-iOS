@@ -12,9 +12,6 @@ import AERecord
 
 class WalmartAPI:RestAPI{
     
-    //let apiKey = "bf90cf2e"
-    //let baseUrl = "http://www.omdbapi.com"
-    
     let baseUrl = "http://api.walmartlabs.com/v1/search"
     let apiKey = "24reqa2swxq55ufw8mxs4az5"
     

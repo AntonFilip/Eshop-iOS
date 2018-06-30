@@ -1,7 +1,3 @@
-//
-//  AppDelegate.swift
-//  Movies
-//
 //  Created by Duje Medak on 13/05/2018.
 //  Copyright © 2018 Duje Medak. All rights reserved.
 //

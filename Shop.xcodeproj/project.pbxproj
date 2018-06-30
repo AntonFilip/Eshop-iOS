@@ -37,7 +37,7 @@
 
 /* Begin PBXFileReference section */
 		0F7E32D5587BE8326E83219D /* Pods_Movies.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Movies.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A51DB14220A8873700230295 /* Movies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Movies.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A51DB14220A8873700230295 /* Shop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A51DB14520A8873700230295 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A51DB14C20A8873700230295 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A51DB14F20A8873700230295 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -83,7 +83,7 @@
 		A51DB13920A8873700230295 = {
 			isa = PBXGroup;
 			children = (
-				A51DB14420A8873700230295 /* Movies */,
+				A51DB14420A8873700230295 /* Shop */,
 				A51DB14320A8873700230295 /* Products */,
 				C6B6E37E7A1F080D4BB70F88 /* Pods */,
 				B3D58DE27A022F3410C084BB /* Frameworks */,
@@ -93,12 +93,12 @@
 		A51DB14320A8873700230295 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A51DB14220A8873700230295 /* Movies.app */,
+				A51DB14220A8873700230295 /* Shop.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		A51DB14420A8873700230295 /* Movies */ = {
+		A51DB14420A8873700230295 /* Shop */ = {
 			isa = PBXGroup;
 			children = (
 				A51DB14C20A8873700230295 /* Assets.xcassets */,
@@ -112,7 +112,7 @@
 				A51DB16020A8A60C00230295 /* Services */,
 				A51DB15F20A8A5F800230295 /* Models */,
 			);
-			path = Movies;
+			path = Shop;
 			sourceTree = "<group>";
 		};
 		A51DB15F20A8A5F800230295 /* Models */ = {
@@ -200,9 +200,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		A51DB14120A8873700230295 /* Movies */ = {
+		A51DB14120A8873700230295 /* Shop */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A51DB15420A8873700230295 /* Build configuration list for PBXNativeTarget "Movies" */;
+			buildConfigurationList = A51DB15420A8873700230295 /* Build configuration list for PBXNativeTarget "Shop" */;
 			buildPhases = (
 				C6F1C60A62588B34550C9A79 /* [CP] Check Pods Manifest.lock */,
 				A51DB13E20A8873700230295 /* Sources */,
@@ -214,9 +214,9 @@
 			);
 			dependencies = (
 			);
-			name = Movies;
+			name = Shop;
 			productName = Movies;
-			productReference = A51DB14220A8873700230295 /* Movies.app */;
+			productReference = A51DB14220A8873700230295 /* Shop.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -235,7 +235,7 @@
 					};
 				};
 			};
-			buildConfigurationList = A51DB13D20A8873700230295 /* Build configuration list for PBXProject "Movies" */;
+			buildConfigurationList = A51DB13D20A8873700230295 /* Build configuration list for PBXProject "Shop" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -248,7 +248,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A51DB14120A8873700230295 /* Movies */,
+				A51DB14120A8873700230295 /* Shop */,
 			);
 		};
 /* End PBXProject section */
@@ -472,7 +472,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
-				INFOPLIST_FILE = Movies/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Shop/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = fer.medak.duje.Movies;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -490,7 +490,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
-				INFOPLIST_FILE = Movies/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Shop/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = fer.medak.duje.Movies;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -503,7 +503,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		A51DB13D20A8873700230295 /* Build configuration list for PBXProject "Movies" */ = {
+		A51DB13D20A8873700230295 /* Build configuration list for PBXProject "Shop" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A51DB15220A8873700230295 /* Debug */,
@@ -512,7 +512,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A51DB15420A8873700230295 /* Build configuration list for PBXNativeTarget "Movies" */ = {
+		A51DB15420A8873700230295 /* Build configuration list for PBXNativeTarget "Shop" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A51DB15520A8873700230295 /* Debug */,

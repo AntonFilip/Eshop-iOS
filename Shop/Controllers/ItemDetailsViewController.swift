@@ -20,9 +20,6 @@ class ItemDetailsViewController: UIViewController{
     @IBOutlet weak var itemPrice: UILabel!
     @IBOutlet weak var itemDescription: UILabel!
     @IBOutlet weak var itemImage: UIImageView!
-    @IBOutlet weak var yearTxt: UILabel!
-    @IBOutlet weak var genreTxt: UILabel!
-    @IBOutlet weak var directorTxt: UILabel!
     
     convenience init(viewModel: SingleItemViewModel) {
         self.init()
@@ -44,6 +41,7 @@ class ItemDetailsViewController: UIViewController{
     
     func fetchData(){
         spinnerView = ItemDetailsViewController.displaySpinner(onView: self.view)
+        // currently all the data is passed from the listView so no rest call will be made...
         viewModel.fetchItemDetails()
     }
     

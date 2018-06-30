@@ -31,18 +31,25 @@ class SingleItemViewModel:NSObject, SingleItemViewModelType{
     var itemDescription: String{
         return item.description
     }
-
+    
     var imageUrl: URL? {
         return URL(string: item.thumbnail)
     }
     
     func fetchItemDetails(){
-        restAPI.fetchItemDetails(itemID: item.id, completion:{ [weak self] (item) in
-            if let newItem = item{
-                self?.item = newItem
-                self?.viewDelegate?.searchResultsDidChanged()
-            }
-        })
+        /*
+         restAPI.fetchItemDetails(itemID: item.id, completion:{ [weak self] (item) in
+         if let newItem = item{
+         self?.item = newItem
+         self?.viewDelegate?.searchResultsDidChanged()
+         }
+         })
+         */
+        
+        // itemModel was set while passing from previos view so no need for rest calls since all the data
+        // about the item was fetched while filling the item list view...
+        viewDelegate?.searchResultsDidChanged()
+        
     }
 }
 
