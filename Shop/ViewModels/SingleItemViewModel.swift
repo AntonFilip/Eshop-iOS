@@ -29,7 +29,7 @@ class SingleItemViewModel:NSObject, SingleItemViewModelType{
     }
     
     var itemDescription: String{
-        return item.description
+        return item.shortItemDescription
     }
     
     var imageUrl: URL? {
