@@ -12,7 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ImageDetailViewController" customModule="Movies" customModuleProvider="target">
             <connections>
-                <outlet property="movieImage" destination="hgW-oN-DjD" id="tWJ-nc-Aod"/>
+                <outlet property="itemImage" destination="hgW-oN-DjD" id="tWJ-nc-Aod"/>
                 <outlet property="scrollView" destination="hMU-J7-aFU" id="zqB-w0-R2e"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>

@@ -1,7 +1,3 @@
-//
-//  MoviesViewModel.swift
-//  Movies
-//
 //  Created by Duje Medak on 06/06/2018.
 //  Copyright © 2018 Duje Medak. All rights reserved.
 //
@@ -11,26 +7,24 @@ import CoreData
 import AERecord
 
 
-protocol MoviesViewModelType {
+protocol ItemListViewModelType {
     var items: [ItemModel]? {get}
-    weak var viewDelegate: MovieListDelegate? {get set }
+    weak var viewDelegate: ItemListViewControllerDelegate? {get set }
 }
 
-class MoviesViewModel: MoviesViewModelType {
-    let baseUrl2 = "http://www.omdbapi.com"
-    let apiKey2 = "bf90cf2e"
+class ItemListViewModel: ItemListViewModelType {
     let restAPI: RestAPI
     let search: String
     
-    weak var viewDelegate: MovieListDelegate?
+    weak var viewDelegate: ItemListViewControllerDelegate?
     
     var items : [ItemModel]? = nil {
         didSet{
             if items != nil{
-                viewDelegate?.movieListDidChanged(success: true)
+                viewDelegate?.itemListDidChanged(success: true)
             }
             else {
-                viewDelegate?.movieListDidChanged(success: false)
+                viewDelegate?.itemListDidChanged(success: false)
             }
         }
     }
@@ -40,23 +34,23 @@ class MoviesViewModel: MoviesViewModelType {
         self.search = title
     }
     
-    func fetchMovies(){
+    func fetchItems(){
         restAPI.fetchItemList(search:self.search, completion:{ [weak self] (items) in
             self?.items = items
         })
     }
     
-    func getMovie(at index: Int) -> ItemModel? {
+    func getItem(at index: Int) -> ItemModel? {
         return items?[index]
     }
     
-    func numberOfMovies() -> Int {
+    func numberOfItems() -> Int {
         return items?.count ?? 0
     }
     
     func didSelectRow(at index: Int) {
         if let item = items?[index]{
-            self.viewDelegate?.loadMovieDetails(item:item)
+            self.viewDelegate?.loadItemDetails(item:item)
         }
     }
 }

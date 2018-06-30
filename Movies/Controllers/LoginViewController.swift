@@ -125,7 +125,7 @@ class LoginViewController: UIViewController {
             self.loginButtonVerticalSpacing2?.constant -= self.view.bounds.height
             self.view.layoutIfNeeded()
         }, completion: { (finished: Bool) in
-            let vc = SearchMovieViewController()
+            let vc = SearchItemViewController()
             self.navigationController?.pushViewController(vc, animated: false)
         })
     }

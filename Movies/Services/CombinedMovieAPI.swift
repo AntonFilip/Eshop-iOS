@@ -12,7 +12,7 @@ import Reachability
 class CombinedMovieAPI:RestAPI{
     
     var connectedToInternet: Bool = false
-    let onlineAPI:RestAPI = OmdbAPI()
+    let onlineAPI:RestAPI = WalmartAPI()
     let offlineAPI:RestAPI = DataCoreAPI()
     
     func checkForConnection(){

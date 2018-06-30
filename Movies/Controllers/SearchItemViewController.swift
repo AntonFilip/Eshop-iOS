@@ -1,14 +1,10 @@
-//
-//  SearchMovieViewController.swift
-//  Movies
-//
 //  Created by Duje Medak on 13/05/2018.
 //  Copyright © 2018 Duje Medak. All rights reserved.
 //
 
 import UIKit
 
-class SearchMovieViewController: UIViewController, UITextFieldDelegate {
+class SearchItemViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var button_search: UIButton!
     @IBOutlet weak var searchText: UITextField!
@@ -65,8 +61,8 @@ class SearchMovieViewController: UIViewController, UITextFieldDelegate {
     
     func loadNewView(){
         if let search = searchText.text{
-            let vm = MoviesViewModel(service: CombinedMovieAPI(), title: search)
-            let vc = MovieListViewController(viewModel: vm)
+            let vm = ItemListViewModel(service: CombinedMovieAPI(), title: search)
+            let vc = ItemListViewController(viewModel: vm)
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }

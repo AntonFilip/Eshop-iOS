@@ -1,7 +1,3 @@
-//
-//  ImageDetailViewController.swift
-//  Movies
-//
 //  Created by Duje Medak on 14/05/2018.
 //  Copyright © 2018 Duje Medak. All rights reserved.
 //
@@ -10,9 +6,9 @@ import UIKit
 
 class ImageDetailViewController: UIViewController{
 
-    var movieImg:UIImage?
+    var itemImg:UIImage?
     @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var movieImage: UIImageView!
+    @IBOutlet weak var itemImage: UIImageView!
     
     convenience init() {
         self.init(movieImg: nil)
@@ -20,7 +16,7 @@ class ImageDetailViewController: UIViewController{
     
     init(movieImg: UIImage?) {
         if let img = movieImg{
-            self.movieImg = img
+            self.itemImg = img
         }
         
         super.init(nibName: nil, bundle: nil)
@@ -35,12 +31,12 @@ class ImageDetailViewController: UIViewController{
         scrollView.minimumZoomScale = 1.0
         scrollView.maximumZoomScale = 5.0
         scrollView.delegate = self
-        movieImage.image = self.movieImg
+        itemImage.image = self.itemImg
     }
 }
 
 extension ImageDetailViewController: UIScrollViewDelegate {
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
-        return movieImage
+        return itemImage
     }
 }

@@ -10,7 +10,7 @@ import Foundation
 import Alamofire
 import AERecord
 
-class OmdbAPI:RestAPI{
+class WalmartAPI:RestAPI{
     
     //let apiKey = "bf90cf2e"
     //let baseUrl = "http://www.omdbapi.com"
