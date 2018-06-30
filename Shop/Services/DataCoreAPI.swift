@@ -28,11 +28,11 @@ class DataCoreAPI:RestAPI{
     func fetchItemList(search: String, completion: @escaping (([ItemModel]?) -> Void)){
         let request: NSFetchRequest<ItemModel> = ItemModel.fetchRequest()
         let context = AERecord.Context.main
-        request.predicate = NSPredicate(format: "title contains[c] %@", search)
-        request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
+        request.predicate = NSPredicate(format: "name contains[c] %@", search)
+        request.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
         
         guard let items = try? context.fetch(request) else{
-            print("Error while fetching items with title", search)
+            print("Error while fetching items with expression", search)
             completion(nil)
             return
         }
