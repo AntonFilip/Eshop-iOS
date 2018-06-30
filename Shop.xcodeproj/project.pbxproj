@@ -28,8 +28,8 @@
 		A5EADB7A20C9170A00CB90E1 /* SingleItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EADB7920C9170A00CB90E1 /* SingleItemViewModel.swift */; };
 		A5EADB7C20C9183000CB90E1 /* ItemsTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EADB7B20C9183000CB90E1 /* ItemsTableHeaderView.swift */; };
 		A5EADB8120C928A500CB90E1 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A5EADB7F20C928A500CB90E1 /* Model.xcdatamodeld */; };
-		A5EFDA8720E7D00C003DDB2A /* ItemModel+CoreDataClass copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EFDA8520E7D00C003DDB2A /* ItemModel+CoreDataClass copy.swift */; };
-		A5EFDA8820E7D00C003DDB2A /* ItemModel+CoreDataProperties copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EFDA8620E7D00C003DDB2A /* ItemModel+CoreDataProperties copy.swift */; };
+		A5EFDA8720E7D00C003DDB2A /* ItemModel+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EFDA8520E7D00C003DDB2A /* ItemModel+CoreDataClass.swift */; };
+		A5EFDA8820E7D00C003DDB2A /* ItemModel+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EFDA8620E7D00C003DDB2A /* ItemModel+CoreDataProperties.swift */; };
 		A5F0A8C520AA389400E71100 /* RestAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F0A8C420AA389400E71100 /* RestAPI.swift */; };
 		A5F8EC2920CAC4F7007D6D5D /* DataCoreAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F8EC2820CAC4F7007D6D5D /* DataCoreAPI.swift */; };
 		A5F8EC2B20CAC984007D6D5D /* CombinedMovieAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F8EC2A20CAC984007D6D5D /* CombinedMovieAPI.swift */; };
@@ -59,8 +59,8 @@
 		A5EADB7920C9170A00CB90E1 /* SingleItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleItemViewModel.swift; sourceTree = "<group>"; };
 		A5EADB7B20C9183000CB90E1 /* ItemsTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsTableHeaderView.swift; sourceTree = "<group>"; };
 		A5EADB8020C928A500CB90E1 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
-		A5EFDA8520E7D00C003DDB2A /* ItemModel+CoreDataClass copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ItemModel+CoreDataClass copy.swift"; sourceTree = "<group>"; };
-		A5EFDA8620E7D00C003DDB2A /* ItemModel+CoreDataProperties copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ItemModel+CoreDataProperties copy.swift"; sourceTree = "<group>"; };
+		A5EFDA8520E7D00C003DDB2A /* ItemModel+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ItemModel+CoreDataClass.swift"; sourceTree = "<group>"; };
+		A5EFDA8620E7D00C003DDB2A /* ItemModel+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ItemModel+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		A5F0A8C420AA389400E71100 /* RestAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestAPI.swift; sourceTree = "<group>"; };
 		A5F8EC2820CAC4F7007D6D5D /* DataCoreAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataCoreAPI.swift; sourceTree = "<group>"; };
 		A5F8EC2A20CAC984007D6D5D /* CombinedMovieAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombinedMovieAPI.swift; sourceTree = "<group>"; };
@@ -118,8 +118,8 @@
 		A51DB15F20A8A5F800230295 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				A5EFDA8520E7D00C003DDB2A /* ItemModel+CoreDataClass copy.swift */,
-				A5EFDA8620E7D00C003DDB2A /* ItemModel+CoreDataProperties copy.swift */,
+				A5EFDA8520E7D00C003DDB2A /* ItemModel+CoreDataClass.swift */,
+				A5EFDA8620E7D00C003DDB2A /* ItemModel+CoreDataProperties.swift */,
 				A5EADB7F20C928A500CB90E1 /* Model.xcdatamodeld */,
 			);
 			path = Models;
@@ -325,7 +325,7 @@
 			files = (
 				A55F5F7D20D1733C009895D0 /* LoginViewController.swift in Sources */,
 				A538C32420C9BF950055E366 /* WalmartAPI.swift in Sources */,
-				A5EFDA8820E7D00C003DDB2A /* ItemModel+CoreDataProperties copy.swift in Sources */,
+				A5EFDA8820E7D00C003DDB2A /* ItemModel+CoreDataProperties.swift in Sources */,
 				A5EADB7A20C9170A00CB90E1 /* SingleItemViewModel.swift in Sources */,
 				A5EADB7C20C9183000CB90E1 /* ItemsTableHeaderView.swift in Sources */,
 				A5F8EC2920CAC4F7007D6D5D /* DataCoreAPI.swift in Sources */,
@@ -336,7 +336,7 @@
 				A5EA427820A98AF30086A6E6 /* ImageDetailViewController.swift in Sources */,
 				A5ADC5CF20C869A00088B6EB /* ItemListViewController.swift in Sources */,
 				A5F0A8C520AA389400E71100 /* RestAPI.swift in Sources */,
-				A5EFDA8720E7D00C003DDB2A /* ItemModel+CoreDataClass copy.swift in Sources */,
+				A5EFDA8720E7D00C003DDB2A /* ItemModel+CoreDataClass.swift in Sources */,
 				A538C31D20C99F400055E366 /* ItemTableViewCell.swift in Sources */,
 				A5F8EC2B20CAC984007D6D5D /* CombinedMovieAPI.swift in Sources */,
 				A5ADC5E720C8817F0088B6EB /* ItemListViewModel.swift in Sources */,

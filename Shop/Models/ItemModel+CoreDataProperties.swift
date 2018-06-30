@@ -16,9 +16,9 @@ extension ItemModel {
         return NSFetchRequest<ItemModel>(entityName: "ItemModel")
     }
 
-    @NSManaged public var id: String?
-    @NSManaged public var name: String?
-    @NSManaged public var price: String?
-    @NSManaged public var thumbnail: String?
+    @NSManaged public var id: String
+    @NSManaged public var name: String
+    @NSManaged public var price: String
+    @NSManaged public var thumbnail: String
 
 }
