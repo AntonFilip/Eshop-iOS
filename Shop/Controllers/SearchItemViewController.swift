@@ -63,6 +63,7 @@ class SearchItemViewController: UIViewController, UITextFieldDelegate {
         if let search = searchText.text{
             let vm = ItemListViewModel(service: CombinedMovieAPI(), title: search)
             let vc = ItemListViewController(viewModel: vm)
+            
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }

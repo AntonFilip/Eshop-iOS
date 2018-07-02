@@ -17,9 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window = UIWindow(frame: UIScreen.main.bounds)
         let vc = LoginViewController()
-        let nvc = UINavigationController(rootViewController: vc)
-        nvc.navigationBar.isTranslucent = false
-        window?.rootViewController = nvc
+        window?.rootViewController = vc
         window?.makeKeyAndVisible()
         return true
     }
