@@ -15,6 +15,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         try? AERecord.loadCoreDataStack()
         
+        UINavigationBar.appearance().backgroundColor = UIColor(red:0.15, green:0.73, blue:0.60, alpha:1.0)
+        UINavigationBar.appearance().tintColor = .white
+        
         window = UIWindow(frame: UIScreen.main.bounds)
         let vc = LoginViewController()
         window?.rootViewController = vc
@@ -22,5 +25,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
+    
+
+    
 }
+
+
 
