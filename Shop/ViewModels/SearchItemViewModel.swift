@@ -1,4 +1,8 @@
-//  Created by Duje Medak on 06/06/2018.
+//
+//  SearchItemViewModel.swift
+//  Shop
+//
+//  Created by Lovro Buničić on 04/07/2018.
 //  Copyright © 2018 Duje Medak. All rights reserved.
 //
 
@@ -9,14 +13,14 @@ import AERecord
 
 protocol ItemListViewModelType {
     var items: [ItemModel]? {get}
-    weak var viewDelegate: ItemListViewControllerDelegate? {get set }
+    weak var viewDelegate: SearchItemViewControllerDelegate? {get set }
 }
 
-class ItemListViewModel: ItemListViewModelType {
+class SearchItemViewModel: ItemListViewModelType {
     let restAPI: RestAPI
-    let search: String
-    
-    weak var viewDelegate: ItemListViewControllerDelegate?
+    var search: String?
+
+    weak var viewDelegate: SearchItemViewControllerDelegate?
     
     var items : [ItemModel]? = nil {
         didSet{
@@ -29,13 +33,13 @@ class ItemListViewModel: ItemListViewModelType {
         }
     }
     
-    init(service: RestAPI, title:String) {
+    init(service: RestAPI) {
         self.restAPI = service
-        self.search = title
     }
     
-    func fetchItems(){
-        restAPI.fetchItemList(search:self.search, completion:{ [weak self] (items) in
+    func fetchItems(for title: String){
+        search = title
+        restAPI.fetchItemList(search: title, completion:{ [weak self] (items) in
             self?.items = items
         })
     }

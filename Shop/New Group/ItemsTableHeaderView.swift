@@ -3,7 +3,6 @@
 //
 
 import UIKit
-import PureLayout
 
 class ItemsTableHeaderView: UIView {
     
@@ -12,13 +11,14 @@ class ItemsTableHeaderView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        backgroundColor = UIColor.lightGray
+        backgroundColor = UIColor.white
         titleLabel = UILabel()
         titleLabel.font = UIFont.systemFont(ofSize: 20)
-        titleLabel.textColor = UIColor.darkGray
+        titleLabel.textColor = UIColor(red:0.25, green:0.63, blue:0.55, alpha:1.0)
         self.addSubview(titleLabel)
-        titleLabel.autoPinEdge(.top, to: .top, of: self, withOffset: 16.0)
-        titleLabel.autoAlignAxis(.vertical, toSameAxisOf: self)
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: CGFloat(16)).isActive = true
+        titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: CGFloat(16)).isActive = true
     }
     
     required init?(coder aDecoder: NSCoder) {

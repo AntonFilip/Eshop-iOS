@@ -13,7 +13,8 @@ class TabBarViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let searchVC = SearchItemViewController()
+        let vm = SearchItemViewModel(service: CombinedMovieAPI())
+        let searchVC = SearchItemViewController(viewModel: vm)
         searchVC.tabBarItem = UITabBarItem(tabBarSystemItem: UITabBarSystemItem.search, tag: 0)
         let searchNVC = UINavigationController(rootViewController: searchVC)
 

@@ -90,7 +90,7 @@ extension ItemDetailsViewController: ItemDetailsViewControllerDelegate{
         itemPrice.text = viewModel.itemPrice
         itemDescription.text = viewModel.itemDescription
         if let sv = spinnerView {
-            ItemListViewController.removeSpinner(spinner: sv)
+            SearchItemViewController.removeSpinner(spinner: sv)
         }
         
         spinnerView = ItemDetailsViewController.displaySpinner(onView: itemImage)
@@ -99,7 +99,7 @@ extension ItemDetailsViewController: ItemDetailsViewControllerDelegate{
             (image, error, cacheType, imageUrl) in
             self.img = image
             if let sv = self.spinnerView {
-                ItemListViewController.removeSpinner(spinner: sv)
+                SearchItemViewController.removeSpinner(spinner: sv)
             }
         })
     }
