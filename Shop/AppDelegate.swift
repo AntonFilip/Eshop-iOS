@@ -15,8 +15,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         try? AERecord.loadCoreDataStack()
         
-        UINavigationBar.appearance().backgroundColor = UIColor(red:0.15, green:0.73, blue:0.60, alpha:1.0)
-        UINavigationBar.appearance().tintColor = .white
+        if let statusBar = UIApplication.shared.value(forKeyPath: "statusBarWindow.statusBar") as? UIView {
+            statusBar.backgroundColor = UIColor(red:0.15, green:0.73, blue:0.60, alpha:1.0)
+        }
+        
+        UITabBar.appearance().tintColor = UIColor(red:0.15, green:0.73, blue:0.60, alpha:1.0)
         
         window = UIWindow(frame: UIScreen.main.bounds)
         let vc = LoginViewController()
