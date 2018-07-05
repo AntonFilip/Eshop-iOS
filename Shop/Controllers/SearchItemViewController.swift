@@ -247,11 +247,13 @@ extension SearchItemViewController: UISearchBarDelegate {
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        timer?.invalidate()
-        timer = Timer.scheduledTimer(withTimeInterval: 0.7, repeats: false, block: { timer in
-            self.searchItems(for: searchText)
-            timer.invalidate()
-        })
+        if searchText != "" {
+            timer?.invalidate()
+            timer = Timer.scheduledTimer(withTimeInterval: 0.7, repeats: false, block: { timer in
+                self.searchItems(for: searchText)
+                timer.invalidate()
+            })
+        }
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
