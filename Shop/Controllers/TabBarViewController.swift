@@ -28,7 +28,13 @@ class TabBarViewController: UITabBarController {
         let profileVC = ProfileViewController()
         profileVC.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(named: "user_male"), tag: 2)
         
-        let tabBarList = [searchNVC, shoppingCartVC, profileVC]
+        let historyVC = HistoryViewController()
+        historyVC.tabBarItem = UITabBarItem(title: "Orders", image: UIImage(named: "order"), tag: 3)
+        
+        let favouritesVC = FavouritesViewController()
+        favouritesVC.tabBarItem = UITabBarItem(title: "Favourites", image: UIImage(named: "heart"), tag: 4)
+        
+        let tabBarList = [searchNVC, shoppingCartVC, profileVC, historyVC, favouritesVC]
         
         viewControllers = tabBarList
 
