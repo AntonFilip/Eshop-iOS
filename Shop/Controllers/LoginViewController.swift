@@ -45,6 +45,19 @@ class LoginViewController: UIViewController {
         profileImage.layer.borderColor = UIColor.white.cgColor
         profileImage.layer.cornerRadius = profileImage.frame.height/2
         profileImage.clipsToBounds = true
+        var usernameAttribute = NSMutableAttributedString()
+        let usernamePlaceHolder  = "Username"
+        var passwordAttribute = NSMutableAttributedString()
+        let passwordPlaceHolder  = "Password"
+        
+        usernameAttribute = NSMutableAttributedString(string:usernamePlaceHolder, attributes: [NSAttributedStringKey.font:UIFont(name: "Georgia", size: 16.0)!]) // Font
+        usernameAttribute.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.white, range:NSRange(location:0,length:usernamePlaceHolder.count))    // Color
+        usernameTextField.attributedPlaceholder = usernameAttribute
+        
+        passwordAttribute = NSMutableAttributedString(string:passwordPlaceHolder, attributes: [NSAttributedStringKey.font:UIFont(name: "Georgia", size: 16.0)!]) // Font
+        passwordAttribute.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.white, range:NSRange(location:0,length:passwordPlaceHolder.count))    // Color
+        passwordTextField.attributedPlaceholder = passwordAttribute
+        
         setInitialStatesOfViews()
     }
     
