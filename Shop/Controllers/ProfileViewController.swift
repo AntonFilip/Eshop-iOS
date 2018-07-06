@@ -10,16 +10,21 @@ import UIKit
 
 class ProfileViewController: UIViewController {
 
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var content: UIView!
+    
+    @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var email: UILabel!
+    @IBOutlet weak var location: UILabel!
+    @IBOutlet weak var birthday: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
-
+    override func viewDidLayoutSubviews() {
+        scrollView.isScrollEnabled = true
+        scrollView.contentSize = CGSize(width: scrollView.contentSize.width, height: scrollView.contentSize.height+1)
+    }
 }

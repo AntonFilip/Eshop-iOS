@@ -36,6 +36,10 @@ class SingleItemViewModel:NSObject, SingleItemViewModelType{
         return URL(string: item.thumbnail)
     }
     
+    var itemId: String {
+        return item.id
+    }
+    
     func fetchItemDetails(){
         /*
          restAPI.fetchItemDetails(itemID: item.id, completion:{ [weak self] (item) in

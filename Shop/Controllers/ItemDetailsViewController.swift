@@ -17,9 +17,12 @@ class ItemDetailsViewController: UIViewController{
     var spinnerView: UIView?
     
     @IBOutlet weak var itemName: UILabel!
+    @IBOutlet weak var itemId: UILabel!
     @IBOutlet weak var itemPrice: UILabel!
-    @IBOutlet weak var itemDescription: UILabel!
+    @IBOutlet weak var itemDescription: UITextView!
     @IBOutlet weak var itemImage: UIImageView!
+    @IBOutlet weak var shoppingCart: UIImageView!
+    @IBOutlet weak var addToCart: UIButton!
     
     convenience init(viewModel: SingleItemViewModel) {
         self.init()
@@ -30,13 +33,18 @@ class ItemDetailsViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "add", style: .done, target: self, action: #selector(onAddButtonTap))
+        self.navigationItem.title = "Product information"
+        self.navigationController?.navigationBar.titleTextAttributes
         itemImage.isUserInteractionEnabled = true
         itemImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(ItemDetailsViewController.onImageViewTap(_:))))
-        
-        itemDescription.lineBreakMode = NSLineBreakMode.byWordWrapping
-        itemDescription.numberOfLines = 0
+        shoppingCart.image = shoppingCart.image?.withRenderingMode(.alwaysTemplate)
+        shoppingCart.tintColor = UIColor.white
         fetchData()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        itemDescription.setContentOffset(CGPoint.zero, animated: false)
     }
     
     func fetchData(){
@@ -52,8 +60,9 @@ class ItemDetailsViewController: UIViewController{
         self.navigationController?.navigationBar.tintAdjustmentMode = .automatic
     }
     
-    @objc func onAddButtonTap(sender: AnyObject) {
-        //TODO load new activity with basket
+    
+    @IBAction func onAddButtonTap(_ sender: UIButton) {
+        
     }
     
     @objc func onImageViewTap(_ sender:AnyObject){
@@ -87,7 +96,8 @@ extension ItemDetailsViewController {
 extension ItemDetailsViewController: ItemDetailsViewControllerDelegate{
     func searchResultsDidChanged() {
         itemName.text = viewModel.itemName
-        itemPrice.text = viewModel.itemPrice
+        itemId.text = "ID: " + viewModel.itemId
+        itemPrice.text = viewModel.itemPrice + " $"
         itemDescription.text = viewModel.itemDescription
         if let sv = spinnerView {
             SearchItemViewController.removeSpinner(spinner: sv)
