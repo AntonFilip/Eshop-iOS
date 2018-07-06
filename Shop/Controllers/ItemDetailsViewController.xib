@@ -14,6 +14,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ItemDetailsViewController" customModule="Shop" customModuleProvider="target">
             <connections>
+                <outlet property="addToCart" destination="Vqd-Da-elE" id="DTw-34-FnR"/>
                 <outlet property="itemDescription" destination="v7t-k4-o4B" id="Rhb-aL-KAa"/>
                 <outlet property="itemId" destination="Z7a-ve-xnT" id="hOg-Yn-wDg"/>
                 <outlet property="itemImage" destination="0yz-zx-50e" id="Hak-Q9-QXF"/>
@@ -36,6 +37,9 @@
                             <state key="normal" title="Add to Cart">
                                 <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
+                            <connections>
+                                <action selector="onAddButtonTap:" destination="-1" eventType="touchUpInside" id="0F7-1f-O5M"/>
+                            </connections>
                         </button>
                         <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shopping_cart" translatesAutoresizingMaskIntoConstraints="NO" id="1UC-Cu-5xu">
                             <rect key="frame" x="252" y="0.5" width="30" height="30"/>

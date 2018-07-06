@@ -13,12 +13,13 @@ class TabBarViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let shoppingCartVM = ShoppingCartViewModel()
         let vm = SearchItemViewModel(service: CombinedMovieAPI())
         let searchVC = SearchItemViewController(viewModel: vm)
         searchVC.tabBarItem = UITabBarItem(tabBarSystemItem: UITabBarSystemItem.search, tag: 0)
         let searchNVC = UINavigationController(rootViewController: searchVC)
 
-        let shoppingCartVC = ShoppingCartViewController()
+        let shoppingCartVC = ShoppingCartViewController(viewModel: shoppingCartVM)
         shoppingCartVC.tabBarItem = UITabBarItem(title: "Cart", image: UIImage(named: "shopping_cart"), tag: 1)
         
         let profileVC = ProfileViewController()

@@ -22,6 +22,7 @@ class ItemDetailsViewController: UIViewController{
     @IBOutlet weak var itemDescription: UITextView!
     @IBOutlet weak var itemImage: UIImageView!
     @IBOutlet weak var shoppingCart: UIImageView!
+    @IBOutlet weak var addToCart: UIButton!
     
     convenience init(viewModel: SingleItemViewModel) {
         self.init()
@@ -32,7 +33,6 @@ class ItemDetailsViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "add", style: .done, target: self, action: #selector(onAddButtonTap))
         self.navigationItem.title = "Product information"
         self.navigationController?.navigationBar.titleTextAttributes
         itemImage.isUserInteractionEnabled = true
@@ -60,8 +60,9 @@ class ItemDetailsViewController: UIViewController{
         self.navigationController?.navigationBar.tintAdjustmentMode = .automatic
     }
     
-    @objc func onAddButtonTap(sender: AnyObject) {
-        //TODO load new activity with basket
+    
+    @IBAction func onAddButtonTap(_ sender: UIButton) {
+        
     }
     
     @objc func onImageViewTap(_ sender:AnyObject){
