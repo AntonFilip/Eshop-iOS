@@ -34,7 +34,7 @@ class SearchItemViewController: UIViewController, UITextFieldDelegate {
         setupTableView()
     }
     
-    @objc func timedSearch() {
+    func timedSearch() {
         timer?.invalidate()
         timer = Timer.scheduledTimer(withTimeInterval: 0.7, repeats: false, block: { timer in
             if let query = self.searchBar.text {
@@ -211,7 +211,6 @@ extension SearchItemViewController: SearchItemViewControllerDelegate{
     }
 }
 
-
 //MARK:- Spinner functions
 
 extension SearchItemViewController {
@@ -248,11 +247,7 @@ extension SearchItemViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText != "" {
-            timer?.invalidate()
-            timer = Timer.scheduledTimer(withTimeInterval: 0.7, repeats: false, block: { timer in
-                self.searchItems(for: searchText)
-                timer.invalidate()
-            })
+            timedSearch()
         }
     }
     
