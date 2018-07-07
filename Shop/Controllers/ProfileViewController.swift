@@ -9,7 +9,7 @@
 import UIKit
 
 class ProfileViewController: UIViewController {
-
+    
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var content: UIView!
     
@@ -19,11 +19,28 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var birthday: UILabel!
     
     
+    @IBOutlet weak var profileImage: UIImageView!
+    @IBOutlet weak var ratingCircle: UILabel!
+    @IBOutlet weak var bougthitemsCircle: UILabel!
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
+    func roundUpView(view:UIView){
+        view.layer.borderWidth = 2
+        view.layer.masksToBounds = false
+        view.layer.borderColor = UIColor.darkGray.cgColor
+        view.layer.cornerRadius = view.frame.height/2
+        view.clipsToBounds = true
+    }
+    
     override func viewDidLayoutSubviews() {
+        roundUpView(view: profileImage)
+        roundUpView(view: ratingCircle)
+        roundUpView(view: bougthitemsCircle)
         scrollView.isScrollEnabled = true
         scrollView.contentSize = CGSize(width: scrollView.contentSize.width, height: scrollView.contentSize.height+1)
     }
