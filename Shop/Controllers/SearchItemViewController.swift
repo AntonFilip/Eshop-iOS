@@ -11,13 +11,14 @@ protocol SearchItemViewControllerDelegate:NSObjectProtocol {
 
 class SearchItemViewController: UIViewController, UITextFieldDelegate {
     
-    @IBOutlet weak var button_search: UIButton!
-    @IBOutlet weak var searchText: UITextField!
+    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     var tableHeaderView: ItemsTableHeaderView!
     var spinnerView: UIView?
     var viewModel: SearchItemViewModel!
     let cellReuseIdentifier = "cellReuseIdentifier"
+    
+    var timer: Timer?
     
     convenience init(viewModel: SearchItemViewModel) {
         self.init()
@@ -27,19 +28,48 @@ class SearchItemViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.searchText.delegate = self as UITextFieldDelegate
-        button_search.layer.cornerRadius = 5
-        button_search.clipsToBounds = true
-        setInitialStatesOfViews()
         
+        setupSearchBar()
+        setInitialStatesOfViews()
         setupTableView()
+    }
+    
+    func timedSearch() {
+        timer?.invalidate()
+        timer = Timer.scheduledTimer(withTimeInterval: 0.7, repeats: false, block: { timer in
+            if let query = self.searchBar.text {
+                self.searchItems(for: query)
+            }
+            timer.invalidate()
+        })
+    }
+    
+    func setupSearchBar() {
+        
+        searchBar.delegate = self
+        searchBar.tintColor = .white
+        searchBar.setShowsCancelButton(false, animated: true)
+        
+        let textField = searchBar.value(forKey: "searchField") as! UITextField
+        
+        let textFieldInsideSearchBarLabel = textField.value(forKey: "placeholderLabel") as? UILabel
+        textFieldInsideSearchBarLabel?.textColor = .white
+        
+        let glassIconView = textField.leftView as! UIImageView
+        glassIconView.image = glassIconView.image?.withRenderingMode(.alwaysTemplate)
+        glassIconView.tintColor = .white
+        
+        if let clearButton = textField.value(forKey: "clearButton") as? UIButton {
+            clearButton.setImage(clearButton.imageView?.image?.withRenderingMode(.alwaysTemplate), for: .normal)
+            clearButton.tintColor = .white
+        }
     }
     
     func setupTableView() {
         tableHeaderView = ItemsTableHeaderView()
         tableHeaderView.setTitle(title: "Searching items...")
         tableView.tableFooterView = UIView()
-        tableView.backgroundColor = UIColor.lightGray
+        tableView.backgroundColor = .white
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorStyle = .singleLine
@@ -54,58 +84,48 @@ class SearchItemViewController: UIViewController, UITextFieldDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = true
-        searchText.text = ""
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        //animateEntry()
+        animateEntry()
     }
     
     func animateEntry(){
         let duration = 0.4
         
         UIView.animate(withDuration: duration, delay: 0, options: .curveEaseOut, animations: {
-            self.searchText.alpha = 1
-            self.searchText.layer.borderColor = UIColor.black.withAlphaComponent(1).cgColor
+            self.searchBar.alpha = 1
+            self.searchBar.layer.borderColor = UIColor.black.withAlphaComponent(1).cgColor
             self.view.layoutIfNeeded()
         }, completion: nil)
         
-        UIView.animate(withDuration: duration, delay: 0, options: .curveEaseOut, animations: {
-            self.button_search.alpha = 1
-            self.button_search.layer.borderColor = UIColor.black.withAlphaComponent(1).cgColor
-            self.view.layoutIfNeeded()
-        }, completion: nil)
     }
     
     func setInitialStatesOfViews(){
-        searchText.alpha = 0.1
-        searchText.layer.borderColor = UIColor.black.withAlphaComponent(0.1).cgColor
-        button_search.alpha = 0.1
-        button_search.layer.borderColor = UIColor.black.withAlphaComponent(0.1).cgColor
+        searchBar.alpha = 0.1
+        searchBar.layer.borderColor = UIColor.black.withAlphaComponent(0.1).cgColor
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = false
     }
     
-    @IBAction func onSearchButtonTapped(_: Any) {
-        searchItems()
-    }
     
-    func searchItems(){
-        if let searchTitle = searchText.text{
-            fetchItems(for: searchTitle)
-            tableView.reloadData()
+    func removeSpinner() {
+        if let sv = spinnerView {
+            SearchItemViewController.removeSpinner(spinner: sv)
         }
     }
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()  //if desired
-        searchItems()
-        return true
+    func searchItems(for query: String){
+        removeSpinner()
+        fetchItems(for: query)
+        tableView.reloadData()
+        
     }
     
+    //MARK:- animation methods
     func animateTable() {
         let cells = tableView.visibleCells
         let tableViewHeight = tableView.bounds.size.height
@@ -122,8 +142,10 @@ class SearchItemViewController: UIViewController, UITextFieldDelegate {
             delayCounter += 1
         }
     }
+  
 }
 
+//MARK:- Table delegate and datasource methods
 extension SearchItemViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -164,12 +186,11 @@ extension SearchItemViewController: UITableViewDataSource {
     }
 }
 
+//MARK:- ItemView Delegate methods
 extension SearchItemViewController: SearchItemViewControllerDelegate{
     
     func itemListDidChanged(success:Bool) {
-        if let sv = spinnerView {
-            SearchItemViewController.removeSpinner(spinner: sv)
-        }
+        removeSpinner()
         
         if !success{
             tableHeaderView.setTitle(title: "No results for " + (viewModel.search ?? ""))
@@ -190,6 +211,8 @@ extension SearchItemViewController: SearchItemViewControllerDelegate{
     }
 }
 
+//MARK:- Spinner functions
+
 extension SearchItemViewController {
     class func displaySpinner(onView : UIView) -> UIView {
         let spinnerView = UIView.init(frame: onView.bounds)
@@ -209,6 +232,29 @@ extension SearchItemViewController {
         DispatchQueue.main.async {
             spinner.removeFromSuperview()
         }
+    }
+}
+
+extension SearchItemViewController: UISearchBarDelegate {
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchBar.setShowsCancelButton(true, animated: true)
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText != "" {
+            timedSearch()
+        }
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        searchBar.text = ""
+        searchBar.setShowsCancelButton(false, animated: true)
     }
 }
 

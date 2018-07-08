@@ -2,7 +2,7 @@
 //  ItemModel+CoreDataClass.swift
 //  
 //
-//  Created by Duje Medak on 30/06/2018.
+//  Created by Lovro Buničić on 08/07/2018.
 //
 //
 
@@ -11,7 +11,6 @@ import CoreData
 
 @objc(ItemModel)
 public class ItemModel: NSManagedObject {
-    
     class func createFrom(json: [String: Any]) -> ItemModel? {
         if  let name = json["name"] as? String,
             let price = json["salePrice"] as? Double,
@@ -26,6 +25,7 @@ public class ItemModel: NSManagedObject {
             item.thumbnail = thumbnail
             item.ratingUrl = ratingUrl
             item.shortItemDescription = itemDescription
+            item.isFavourite = true
             return item
             
         }

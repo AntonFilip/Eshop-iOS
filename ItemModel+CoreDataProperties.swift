@@ -2,7 +2,7 @@
 //  ItemModel+CoreDataProperties.swift
 //  
 //
-//  Created by Duje Medak on 30/06/2018.
+//  Created by Lovro Buničić on 08/07/2018.
 //
 //
 
@@ -18,9 +18,9 @@ extension ItemModel {
 
     @NSManaged public var id: String
     @NSManaged public var name: String
-    @NSManaged public var shortItemDescription: String
     @NSManaged public var price: String
+    @NSManaged public var shortItemDescription: String
     @NSManaged public var thumbnail: String
     @NSManaged public var ratingUrl: String
-
+    @NSManaged public var isFavourite: Bool
 }

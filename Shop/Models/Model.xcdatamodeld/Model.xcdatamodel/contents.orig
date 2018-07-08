@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<<<<<<< HEAD
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14135" systemVersion="17E202" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+=======
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14135" systemVersion="17F77" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+>>>>>>> a6f0418f25f6fa328f0829f5d96c03c91fce401e
     <entity name="ItemModel" representedClassName="ItemModel" syncable="YES">
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="isFavourite" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
@@ -15,6 +19,9 @@
     </entity>
     <elements>
         <element name="ItemModel" positionX="-63" positionY="-18" width="128" height="135"/>
+<<<<<<< HEAD
+=======
         <element name="Purchase" positionX="-63" positionY="18" width="128" height="75"/>
+>>>>>>> a6f0418f25f6fa328f0829f5d96c03c91fce401e
     </elements>
 </model>
