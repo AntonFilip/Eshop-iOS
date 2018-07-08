@@ -17,11 +17,15 @@ protocol FavouritesViewControllerDelegate:NSObjectProtocol {
 class FavouritesViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    var tableHeaderView: ItemsTableHeaderView!
+
     var viewModel: FavouritesViewModel!
     let cellReuseIdentifier = "cellReuseIdentifier"
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableHeaderView = ItemsTableHeaderView()
+        tableHeaderView.setTitle(title: "Favourites")
         tableView.backgroundColor = .white
         tableView.delegate = self
         tableView.dataSource = self
@@ -60,9 +64,9 @@ extension FavouritesViewController: UITableViewDelegate {
         return 100.0
     }
     
-//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        return tableHeaderView
-//    }
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return tableHeaderView
+    }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 50.0
@@ -90,7 +94,6 @@ extension FavouritesViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("Broj itema:"+String(viewModel.numberOfItems()))
         return viewModel.numberOfItems()
     }
 }
@@ -100,14 +103,14 @@ extension FavouritesViewController: FavouritesViewControllerDelegate{
     func itemListDidChanged(success:Bool) {
         
         if !success{
-//            tableHeaderView.setTitle(title: "No results for " + (viewModel.search ?? ""))
-//            tableView.tableFooterView = UIView()
+            tableHeaderView.setTitle(title: "No items found.")
+            tableView.tableFooterView = UIView()
         }
         else{
             tableView.reloadData()
             animateTable()
-//            tableHeaderView.setTitle(title: "\(viewModel.numberOfItems()) items found")
-//            tableView.tableFooterView = nil
+            tableHeaderView.setTitle(title: "Favourites")
+            tableView.tableFooterView = nil
         }
     }
     
