@@ -15,7 +15,7 @@ public class ItemModel: NSManagedObject {
     class func createFrom(json: [String: Any]) -> ItemModel? {
         if  let name = json["name"] as? String,
             let price = json["salePrice"] as? Double,
-            let thumbnail = json["thumbnailImage"] as? String,
+            let thumbnail = json["largeImage"] as? String,
             let itemDescription = json["shortDescription"] as? String,
             let id = json["itemId"] as? Int32{
 
