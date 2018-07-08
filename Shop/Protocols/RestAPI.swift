@@ -14,4 +14,6 @@ protocol RestAPI{
     func fetchItemDetails(itemID:String, completion: @escaping ((ItemModel?) -> Void)) -> Void
     
     func fetchItemList(search: String, completion: @escaping (([ItemModel]?) -> Void))
+    
+    
 }

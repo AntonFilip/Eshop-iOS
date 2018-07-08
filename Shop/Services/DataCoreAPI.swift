@@ -45,4 +45,25 @@ class DataCoreAPI:RestAPI{
         }
         
     }
+    
+    func fetchFavourites(completion: @escaping (([ItemModel]?) -> Void))  {
+        
+        let request: NSFetchRequest<ItemModel> = ItemModel.fetchRequest()
+        let context = AERecord.Context.main
+        request.predicate = NSPredicate(format: "isFavourite == 1")
+        request.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
+        
+        guard let items = try? context.fetch(request) else{
+            print("Error while fetching favourites items")
+            completion(nil)
+            return
+        }
+        
+        if items.count > 1 {
+            completion(items)
+        }
+        else{
+            completion(nil)
+        }
+    }
 }

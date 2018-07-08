@@ -23,7 +23,7 @@ public class ItemModel: NSManagedObject {
             item.price = String(price)
             item.thumbnail = thumbnail
             item.shortItemDescription = itemDescription
-            item.isFavourite = false
+            item.isFavourite = true
             return item
             
         }

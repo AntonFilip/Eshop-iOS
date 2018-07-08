@@ -13,7 +13,6 @@ class TabBarViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let shoppingCartVM = ShoppingCartViewModel()
         let vm = SearchItemViewModel(service: CombinedMovieAPI())
         let searchVC = SearchItemViewController(viewModel: vm)
         searchVC.tabBarItem = UITabBarItem(tabBarSystemItem: UITabBarSystemItem.search, tag: 0)
@@ -22,7 +21,7 @@ class TabBarViewController: UITabBarController {
         searchNVC.navigationBar.tintColor = .white
         searchNVC.navigationBar.barTintColor = UIColor(red:0.15, green:0.73, blue:0.60, alpha:1.0)
 
-
+        let shoppingCartVM = ShoppingCartViewModel()
         let shoppingCartVC = ShoppingCartViewController(viewModel: shoppingCartVM)
         shoppingCartVC.tabBarItem = UITabBarItem(title: "Cart", image: UIImage(named: "shopping_cart"), tag: 1)
         
@@ -32,7 +31,8 @@ class TabBarViewController: UITabBarController {
         let historyVC = HistoryViewController()
         historyVC.tabBarItem = UITabBarItem(title: "Orders", image: UIImage(named: "order"), tag: 3)
         
-        let favouritesVC = FavouritesViewController()
+        let favouritesVM = FavouritesViewModel(service: CombinedMovieAPI())
+        let favouritesVC = FavouritesViewController(viewModel: favouritesVM)
         favouritesVC.tabBarItem = UITabBarItem(title: "Favourites", image: UIImage(named: "heart"), tag: 4)
         
         let tabBarList = [searchNVC, shoppingCartVC, profileVC, historyVC, favouritesVC]

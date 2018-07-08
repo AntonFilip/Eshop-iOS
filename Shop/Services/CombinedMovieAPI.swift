@@ -47,5 +47,10 @@ class CombinedMovieAPI:RestAPI{
             self.offlineAPI.fetchItemList(search: search, completion: completion)
         }
     }
+    
+    func fetchFavourites(completion: @escaping (([ItemModel]?) -> Void))  {
+        let api = DataCoreAPI()
+        api.fetchFavourites(completion: completion)
+    }
 }
 
