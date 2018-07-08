@@ -2,6 +2,18 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:ItemModel+CoreDataClass.swift">
+   </FileRef>
+   <FileRef
+      location = "group:ItemModel+CoreDataProperties.swift">
+   </FileRef>
+   <FileRef
+      location = "group:/Users/lbunicic/Developer/iOS_Vjestina/Eshop/Eshop/Shop/Models/Purchase+CoreDataClass.swift">
+   </FileRef>
+   <FileRef
+      location = "group:/Users/lbunicic/Developer/iOS_Vjestina/Eshop/Eshop/Shop/Models/Purchase+CoreDataProperties.swift">
+   </FileRef>
+   <FileRef
       location = "group:Shop.xcodeproj">
    </FileRef>
    <FileRef
