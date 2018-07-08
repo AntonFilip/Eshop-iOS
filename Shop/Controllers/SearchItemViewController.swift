@@ -17,13 +17,15 @@ class SearchItemViewController: UIViewController, UITextFieldDelegate {
     var spinnerView: UIView?
     var viewModel: SearchItemViewModel!
     let cellReuseIdentifier = "cellReuseIdentifier"
+    var shoppingCartVC: ShoppingCartViewController!
     
     var timer: Timer?
     
-    convenience init(viewModel: SearchItemViewModel) {
+    convenience init(viewModel: SearchItemViewModel, shoppingCartVC: ShoppingCartViewController) {
         self.init()
         self.viewModel = viewModel
         self.viewModel.viewDelegate = self
+        self.shoppingCartVC = shoppingCartVC
     }
     
     override func viewDidLoad() {
@@ -206,7 +208,7 @@ extension SearchItemViewController: SearchItemViewControllerDelegate{
     
     func loadItemDetails(item: ItemModel) {
         let smvm = SingleItemViewModel(service: CombinedMovieAPI(),item:item)
-        let vc = ItemDetailsViewController(viewModel: smvm)
+        let vc = ItemDetailsViewController(viewModel: smvm, shoppingCartVC: shoppingCartVC, showBuy: true)
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }

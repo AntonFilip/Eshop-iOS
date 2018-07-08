@@ -13,17 +13,21 @@ class TabBarViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let shoppingCartVM = ShoppingCartViewModel()
+        let shoppingCartVC = ShoppingCartViewController(viewModel: shoppingCartVM)
+        shoppingCartVC.tabBarItem = UITabBarItem(title: "Cart", image: UIImage(named: "shopping_cart"), tag: 1)
+        let shoppingCartNVC = UINavigationController(rootViewController: shoppingCartVC)
+        shoppingCartNVC.navigationBar.isTranslucent = false
+        shoppingCartNVC.navigationBar.tintColor = .white
+        shoppingCartNVC.navigationBar.barTintColor = UIColor(red:0.15, green:0.73, blue:0.60, alpha:1.0)
+        
         let vm = SearchItemViewModel(service: CombinedMovieAPI())
-        let searchVC = SearchItemViewController(viewModel: vm)
+        let searchVC = SearchItemViewController(viewModel: vm, shoppingCartVC: shoppingCartVC)
         searchVC.tabBarItem = UITabBarItem(tabBarSystemItem: UITabBarSystemItem.search, tag: 0)
         let searchNVC = UINavigationController(rootViewController: searchVC)
         searchNVC.navigationBar.isTranslucent = false
         searchNVC.navigationBar.tintColor = .white
         searchNVC.navigationBar.barTintColor = UIColor(red:0.15, green:0.73, blue:0.60, alpha:1.0)
-
-        let shoppingCartVM = ShoppingCartViewModel()
-        let shoppingCartVC = ShoppingCartViewController(viewModel: shoppingCartVM)
-        shoppingCartVC.tabBarItem = UITabBarItem(title: "Cart", image: UIImage(named: "shopping_cart"), tag: 1)
         
         let profileVC = ProfileViewController()
         profileVC.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(named: "user_male"), tag: 2)
@@ -39,7 +43,7 @@ class TabBarViewController: UITabBarController {
         favouritesNVC.navigationBar.tintColor = .white
         favouritesNVC.navigationBar.barTintColor = UIColor(red:0.15, green:0.73, blue:0.60, alpha:1.0)
         
-        let tabBarList = [searchNVC, shoppingCartVC, profileVC, historyVC, favouritesNVC]
+        let tabBarList = [searchNVC, shoppingCartNVC, profileVC, historyVC, favouritesNVC]
         
         viewControllers = tabBarList
 

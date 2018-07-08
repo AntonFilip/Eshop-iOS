@@ -12,12 +12,24 @@ class ShoppingCartViewModel {
     
     var items: [ItemModel]?
     
+    init(){
+        self.items = [ItemModel]()
+    }
+    
     func addItem(item: ItemModel){
         items?.append(item)
     }
     
     func getItem(at index: Int) -> ItemModel? {
         return items?[index]
+    }
+    
+    func getTotalPrice() -> Double{
+        var total = 0.0
+        for item in items!{
+            total += Double(item.price)!
+        }
+        return total
     }
     
     func numberOfItems() -> Int {

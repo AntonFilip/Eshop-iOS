@@ -121,7 +121,7 @@ extension FavouritesViewController: FavouritesViewControllerDelegate{
     
     func loadItemDetails(item: ItemModel) {
         let smvm = SingleItemViewModel(service: CombinedMovieAPI(),item:item)
-        let vc = ItemDetailsViewController(viewModel: smvm)
+        let vc = ItemDetailsViewController(viewModel: smvm, shoppingCartVC: ShoppingCartViewController(), showBuy: false)
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }

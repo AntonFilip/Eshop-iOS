@@ -10,6 +10,8 @@ import UIKit
 
 class ShoppingCartViewController: UIViewController {
 
+    @IBOutlet weak var totalLabel: UILabel!
+    @IBOutlet weak var buyButton: UIButton!
     @IBOutlet weak var cartList: UITableView!
     var tableHeaderView: ItemsTableHeaderView!
     var viewModel: ShoppingCartViewModel!
@@ -25,7 +27,17 @@ class ShoppingCartViewController: UIViewController {
 
         setupCartList()
     }
+    
+    override func viewDidLayoutSubviews() {
+        buyButton.layer.cornerRadius = 8
+    }
 
+    override func viewWillAppear(_ animated: Bool) {
+        cartList.reloadData()
+        var total = viewModel.getTotalPrice()
+        totalLabel.text = "Total: " + String(total) + "$"
+    }
+    
     func setupCartList() {
         tableHeaderView = ItemsTableHeaderView()
         tableHeaderView.setTitle(title: "Your cart")
@@ -34,12 +46,16 @@ class ShoppingCartViewController: UIViewController {
         cartList.delegate = self
         cartList.dataSource = self
         cartList.separatorStyle = .singleLine
-        cartList.register(UINib(nibName: "ItemcartListCell", bundle: nil), forCellReuseIdentifier: cellReuseIdentifier)
+        cartList.register(UINib(nibName: "ItemTableViewCell", bundle: nil), forCellReuseIdentifier: cellReuseIdentifier)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    @IBAction func buyButtonTap(_ sender: Any) {
+        var purchaseItems = NSSet(array: viewModel.items!)
+        Purchase.createFrom(items: purchaseItems)
     }
 }
 
@@ -61,7 +77,7 @@ extension ShoppingCartViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         let item = viewModel.getItem(at: indexPath.row)
         let smvm = SingleItemViewModel(service: CombinedMovieAPI(), item: item!)
-        let vc = ItemDetailsViewController(viewModel: smvm)
+        let vc = ItemDetailsViewController(viewModel: smvm, shoppingCartVC: ShoppingCartViewController(), showBuy: false)
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }

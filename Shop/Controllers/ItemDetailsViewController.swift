@@ -15,6 +15,8 @@ class ItemDetailsViewController: UIViewController{
     var viewModel: SingleItemViewModel!
     var img: UIImage?
     var spinnerView: UIView?
+    var shoppingCartVC: ShoppingCartViewController!
+    var showBuy: Bool!
     
     @IBOutlet weak var itemName: UILabel!
     @IBOutlet weak var itemId: UILabel!
@@ -25,11 +27,13 @@ class ItemDetailsViewController: UIViewController{
     @IBOutlet weak var addToCart: UIButton!
     @IBOutlet weak var itemRating: UIImageView!
     
-    convenience init(viewModel: SingleItemViewModel) {
+    convenience init(viewModel: SingleItemViewModel, shoppingCartVC: ShoppingCartViewController, showBuy: Bool) {
         self.init()
         self.viewModel = viewModel
         self.viewModel.viewDelegate = self
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "heart"), style: .done, target: self, action: #selector(toggleFavourites))
+        self.shoppingCartVC = shoppingCartVC
+        self.showBuy = showBuy
     }
     
     @objc func toggleFavourites() {
@@ -39,6 +43,9 @@ class ItemDetailsViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if (!showBuy){
+            addToCart.isHidden = true
+        }
         self.navigationItem.title = "Product information"
         self.navigationController?.navigationBar.titleTextAttributes
         itemImage.isUserInteractionEnabled = true
@@ -51,6 +58,7 @@ class ItemDetailsViewController: UIViewController{
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         itemDescription.setContentOffset(CGPoint.zero, animated: false)
+        addToCart.layer.cornerRadius = 8
     }
     
     func fetchData(){
@@ -66,9 +74,22 @@ class ItemDetailsViewController: UIViewController{
         self.navigationController?.navigationBar.tintAdjustmentMode = .automatic
     }
     
+    func showToast(controller: UIViewController, message : String, seconds: Double) {
+        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        alert.view.backgroundColor = UIColor.black
+        alert.view.alpha = 0.6
+        alert.view.layer.cornerRadius = 15
+        
+        controller.present(alert, animated: true)
+        
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + seconds) {
+            alert.dismiss(animated: true)
+        }
+    }
     
     @IBAction func onAddButtonTap(_ sender: UIButton) {
-        
+        shoppingCartVC.viewModel.addItem(item: viewModel.item)
+        showToast(controller: self, message: "Item added to cart", seconds: 1)
     }
     
     @objc func onImageViewTap(_ sender:AnyObject){

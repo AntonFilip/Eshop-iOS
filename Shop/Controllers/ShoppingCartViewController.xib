@@ -13,7 +13,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ShoppingCartViewController" customModule="Shop" customModuleProvider="target">
             <connections>
+                <outlet property="buyButton" destination="arP-W7-5Hu" id="4K7-WW-Q5f"/>
                 <outlet property="cartList" destination="gea-J6-Ebi" id="obV-Bt-erp"/>
+                <outlet property="totalLabel" destination="ois-Nu-GED" id="GV2-O5-nxl"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -29,18 +31,21 @@
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ois-Nu-GED">
                     <rect key="frame" x="168" y="536.5" width="38" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" red="0.78431372549019607" green="0.94901960784313721" blue="0.90980392156862744" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="textColor" red="0.25098039215686274" green="0.62745098039215685" blue="0.54509803921568623" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="arP-W7-5Hu">
                     <rect key="frame" x="37" y="565" width="300" height="36"/>
-                    <color key="backgroundColor" red="0.78431372549019607" green="0.94901960784313721" blue="0.90980392156862744" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" red="0.14509803921568626" green="0.72549019607843135" blue="0.59607843137254901" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="36" id="QWK-7b-vrg"/>
                     </constraints>
                     <state key="normal" title="Buy">
                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
+                    <connections>
+                        <action selector="buyButtonTap:" destination="-1" eventType="touchUpInside" id="oV7-cf-sZG"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
