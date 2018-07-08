@@ -25,7 +25,7 @@ public class ItemModel: NSManagedObject {
             item.thumbnail = thumbnail
             item.ratingUrl = ratingUrl
             item.shortItemDescription = itemDescription
-            item.isFavourite = true
+            item.isFavourite = false
             return item
             
         }
