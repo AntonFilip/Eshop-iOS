@@ -20,7 +20,7 @@ class FavouritesViewController: UIViewController {
     var tableHeaderView: ItemsTableHeaderView!
 
     var viewModel: FavouritesViewModel!
-    let cellReuseIdentifier = "cellReuseIdentifier"
+    let cellReuseIdentifier = "favouriteCellReuseIdentifier"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -99,6 +99,7 @@ extension FavouritesViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print("num:",viewModel.numberOfItems())
         return viewModel.numberOfItems()
     }
 }
@@ -115,7 +116,10 @@ extension FavouritesViewController: FavouritesViewControllerDelegate{
             tableView.reloadData()
             animateTable()
             tableHeaderView.setTitle(title: "Favourites")
-            tableView.tableFooterView = nil
+            //tableView.tableFooterView = nil
+            
+            //to remove extra separators
+            tableView.tableFooterView = UIView()
         }
     }
     
