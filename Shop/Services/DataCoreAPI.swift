@@ -50,7 +50,7 @@ class DataCoreAPI:RestAPI{
         
         let request: NSFetchRequest<ItemModel> = ItemModel.fetchRequest()
         let context = AERecord.Context.main
-        request.predicate = NSPredicate(format: "isFavourite == 1")
+        request.predicate = NSPredicate(format: "isFavourite == %@", NSNumber(value: true))
         request.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
         
         guard let items = try? context.fetch(request) else{
@@ -59,7 +59,7 @@ class DataCoreAPI:RestAPI{
             return
         }
         
-        if items.count > 1 {
+        if items.count > 0 {
             completion(items)
         }
         else{
