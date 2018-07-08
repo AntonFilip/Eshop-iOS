@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AERecord
 
 class ShoppingCartViewController: UIViewController {
 
@@ -56,6 +57,7 @@ class ShoppingCartViewController: UIViewController {
     @IBAction func buyButtonTap(_ sender: Any) {
         var purchaseItems = NSSet(array: viewModel.items!)
         Purchase.createFrom(items: purchaseItems)
+        try? AERecord.Context.main.save()
         viewModel.emptyItems()
         DialogHelper.showToast(controller: self, message: "All items bought!", seconds: 1)
         cartList.reloadData()

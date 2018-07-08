@@ -19,13 +19,14 @@ class HistoryViewController: UIViewController {
         super.viewDidLoad()
         setupPurchasesList()
         viewModel.fetchItems()
+        purchasesList.reloadData()
     }
     
     convenience init(viewModel: HistoryViewModel){
         self.init()
         self.viewModel = viewModel
     }
-    
+ 
     func setupPurchasesList() {
         tableHeaderView = ItemsTableHeaderView()
         tableHeaderView.setTitle(title: "Your cart")
@@ -36,9 +37,8 @@ class HistoryViewController: UIViewController {
         purchasesList.separatorStyle = .singleLine
         purchasesList.register(UINib(nibName: "ItemTableViewCell", bundle: nil), forCellReuseIdentifier: cellReuseIdentifier)
     }
-    
-
 }
+
 extension HistoryViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -50,7 +50,7 @@ extension HistoryViewController: UITableViewDelegate {
         let date = viewModel.getItem(at: section)?.date
         let formatter = DateFormatter()
         formatter.dateStyle = DateFormatter.Style.medium
-        header.setTitle(title:  "Purchases from " + formatter.string(from: date as! Date) + ": ")
+        header.setTitle(title:  "Purchase from " + formatter.string(from: date as! Date) + ": ")
         return header
     }
     
@@ -60,7 +60,7 @@ extension HistoryViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let item = viewModel.getItem(at: indexPath.row)
+        let item = viewModel.getItem(at: indexPath.section)
         let smvm = SingleItemViewModel(service: CombinedMovieAPI(), item: item?.relationship?.allObjects[indexPath.row] as! ItemModel)
         let vc = ItemDetailsViewController(viewModel: smvm, shoppingCartVC: ShoppingCartViewController(), showBuy: false)
         self.navigationController?.pushViewController(vc, animated: true)
@@ -73,7 +73,8 @@ extension HistoryViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier, for: indexPath) as! ItemTableViewCell
         
         if let item = viewModel.getItem(at: indexPath.section) {
-            cell.setup(with: item.relationship?.allObjects[indexPath.row] as! ItemModel)
+            let itemModel = item.relationship?.allObjects[indexPath.row] as! ItemModel
+            cell.setup(with: itemModel)
         }
         return cell
     }
@@ -83,6 +84,8 @@ extension HistoryViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (viewModel.getItem(at: section)?.relationship?.count)!
+        let relationship = viewModel.getItem(at: section)?.relationship
+        let count = relationship?.count
+        return count!
     }
 }

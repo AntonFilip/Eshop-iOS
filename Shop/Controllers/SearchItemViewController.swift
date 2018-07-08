@@ -69,7 +69,7 @@ class SearchItemViewController: UIViewController, UITextFieldDelegate {
     
     func setupTableView() {
         tableHeaderView = ItemsTableHeaderView()
-        tableHeaderView.setTitle(title: "Searching items...")
+        tableHeaderView.setTitle(title: "Enter items to search above")
         tableView.tableFooterView = UIView()
         tableView.backgroundColor = .white
         tableView.delegate = self

@@ -24,7 +24,8 @@ class HistoryViewModel {
     }
     
     func getItem(at index: Int) -> Purchase? {
-        return items?[index]
+        let item = items?[index]
+        return item
     }
     
     func numberOfItems() -> Int {
