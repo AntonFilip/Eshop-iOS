@@ -9,6 +9,7 @@ class ItemTableViewCell: UITableViewCell {
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var price: UILabel!
     @IBOutlet weak var itemImage: UIImageView!
+    @IBOutlet weak var itemRating: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -35,6 +36,9 @@ class ItemTableViewCell: UITableViewCell {
         price.text = "(" + item.price + " $)"
         if  let url = URL(string: item.thumbnail) {
             itemImage.kf.setImage(with: url)
+        }
+        if  let ratingUrl = URL(string: item.ratingUrl) {
+            itemRating.kf.setImage(with: ratingUrl, placeholder: #imageLiteral(resourceName: "item_score"), options: nil, progressBlock: nil, completionHandler: nil)
         }
     }
 }

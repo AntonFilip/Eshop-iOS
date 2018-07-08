@@ -40,6 +40,10 @@ class SingleItemViewModel:NSObject, SingleItemViewModelType{
         return item.id
     }
     
+    var ratingUrl: String {
+        return item.ratingUrl
+    }
+    
     func fetchItemDetails(){
         /*
          restAPI.fetchItemDetails(itemID: item.id, completion:{ [weak self] (item) in

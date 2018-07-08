@@ -21,5 +21,6 @@ extension ItemModel {
     @NSManaged public var shortItemDescription: String
     @NSManaged public var price: String
     @NSManaged public var thumbnail: String
+    @NSManaged public var ratingUrl: String
 
 }

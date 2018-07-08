@@ -23,6 +23,7 @@ class ItemDetailsViewController: UIViewController{
     @IBOutlet weak var itemImage: UIImageView!
     @IBOutlet weak var shoppingCart: UIImageView!
     @IBOutlet weak var addToCart: UIButton!
+    @IBOutlet weak var itemRating: UIImageView!
     
     convenience init(viewModel: SingleItemViewModel) {
         self.init()
@@ -99,6 +100,9 @@ extension ItemDetailsViewController: ItemDetailsViewControllerDelegate{
         itemId.text = "ID: " + viewModel.itemId
         itemPrice.text = viewModel.itemPrice + " $"
         itemDescription.text = viewModel.itemDescription
+        if  let ratingUrl = URL(string: viewModel.ratingUrl) {
+            itemRating.kf.setImage(with: ratingUrl, placeholder: #imageLiteral(resourceName: "item_score"), options: nil, progressBlock: nil, completionHandler: nil)
+        }
         if let sv = spinnerView {
             SearchItemViewController.removeSpinner(spinner: sv)
         }

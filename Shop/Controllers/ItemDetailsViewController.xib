@@ -20,6 +20,7 @@
                 <outlet property="itemImage" destination="0yz-zx-50e" id="Hak-Q9-QXF"/>
                 <outlet property="itemName" destination="lce-bo-TPh" id="4d2-G3-tgs"/>
                 <outlet property="itemPrice" destination="lif-5I-pZn" id="SSq-Pe-WI6"/>
+                <outlet property="itemRating" destination="i20-lv-BTD" id="6Ed-7d-W6d"/>
                 <outlet property="shoppingCart" destination="1UC-Cu-5xu" id="cpJ-nY-Xlo"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>

@@ -58,6 +58,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="itemImage" destination="pNk-Xt-V3l" id="fSw-QK-jz7"/>
+                <outlet property="itemRating" destination="I7a-np-3v8" id="i4O-bJ-QzO"/>
                 <outlet property="name" destination="eC3-uh-i5K" id="1uI-H2-ReH"/>
                 <outlet property="price" destination="Poi-fC-89l" id="KAW-Mp-bkf"/>
             </connections>

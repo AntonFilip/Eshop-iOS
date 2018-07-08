@@ -17,17 +17,18 @@ public class ItemModel: NSManagedObject {
             let price = json["salePrice"] as? Double,
             let thumbnail = json["largeImage"] as? String,
             let itemDescription = json["shortDescription"] as? String,
+            let ratingUrl = json["customerRatingImage"] as? String,
             let id = json["itemId"] as? Int32{
-
+            
             let item = ItemModel.firstOrCreate(with: ["id": String(id)])
             item.name = name
             item.price = String(price)
             item.thumbnail = thumbnail
+            item.ratingUrl = ratingUrl
             item.shortItemDescription = itemDescription
             return item
-
+            
         }
         return nil
     }
-    
 }
