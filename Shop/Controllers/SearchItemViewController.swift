@@ -218,7 +218,7 @@ extension SearchItemViewController: SearchItemViewControllerDelegate{
 extension SearchItemViewController {
     class func displaySpinner(onView : UIView) -> UIView {
         let spinnerView = UIView.init(frame: onView.bounds)
-        spinnerView.backgroundColor = UIColor.init(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.2)
+        spinnerView.backgroundColor = UIColor.init(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.7)
         let ai = UIActivityIndicatorView.init(activityIndicatorStyle: .whiteLarge)
         ai.startAnimating()
         ai.center = spinnerView.center

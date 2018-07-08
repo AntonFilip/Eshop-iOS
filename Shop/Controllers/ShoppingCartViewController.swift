@@ -56,6 +56,10 @@ class ShoppingCartViewController: UIViewController {
     @IBAction func buyButtonTap(_ sender: Any) {
         var purchaseItems = NSSet(array: viewModel.items!)
         Purchase.createFrom(items: purchaseItems)
+        viewModel.emptyItems()
+        DialogHelper.showToast(controller: self, message: "All items bought!", seconds: 1)
+        cartList.reloadData()
+        totalLabel.text = "Total: 0$"
     }
 }
 

@@ -16,37 +16,38 @@ class TabBarViewController: UITabBarController {
         let shoppingCartVM = ShoppingCartViewModel()
         let shoppingCartVC = ShoppingCartViewController(viewModel: shoppingCartVM)
         shoppingCartVC.tabBarItem = UITabBarItem(title: "Cart", image: UIImage(named: "shopping_cart"), tag: 1)
-        let shoppingCartNVC = UINavigationController(rootViewController: shoppingCartVC)
-        shoppingCartNVC.navigationBar.isTranslucent = false
-        shoppingCartNVC.navigationBar.tintColor = .white
-        shoppingCartNVC.navigationBar.barTintColor = UIColor(red:0.15, green:0.73, blue:0.60, alpha:1.0)
+        let shoppingCartNVC = setupNavigationController(vc: shoppingCartVC)
         
         let vm = SearchItemViewModel(service: CombinedMovieAPI())
         let searchVC = SearchItemViewController(viewModel: vm, shoppingCartVC: shoppingCartVC)
         searchVC.tabBarItem = UITabBarItem(tabBarSystemItem: UITabBarSystemItem.search, tag: 0)
-        let searchNVC = UINavigationController(rootViewController: searchVC)
-        searchNVC.navigationBar.isTranslucent = false
-        searchNVC.navigationBar.tintColor = .white
-        searchNVC.navigationBar.barTintColor = UIColor(red:0.15, green:0.73, blue:0.60, alpha:1.0)
+        let searchNVC = setupNavigationController(vc: searchVC)
         
         let profileVC = ProfileViewController()
         profileVC.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(named: "user_male"), tag: 2)
         
-        let historyVC = HistoryViewController()
+        let historyVC = HistoryViewController(viewModel: HistoryViewModel(service: CombinedMovieAPI()))
         historyVC.tabBarItem = UITabBarItem(title: "Orders", image: UIImage(named: "order"), tag: 3)
+        let historyNVC = setupNavigationController(vc: historyVC)
         
         let favouritesVM = FavouritesViewModel(service: CombinedMovieAPI())
         let favouritesVC = FavouritesViewController(viewModel: favouritesVM)
         favouritesVC.tabBarItem = UITabBarItem(title: "Favourites", image: UIImage(named: "heart"), tag: 4)
-        let favouritesNVC = UINavigationController(rootViewController: favouritesVC)
-        favouritesNVC.navigationBar.isTranslucent = false
-        favouritesNVC.navigationBar.tintColor = .white
-        favouritesNVC.navigationBar.barTintColor = UIColor(red:0.15, green:0.73, blue:0.60, alpha:1.0)
+        let favouritesNVC = setupNavigationController(vc: favouritesVC)
         
-        let tabBarList = [searchNVC, shoppingCartNVC, profileVC, historyVC, favouritesNVC]
+        let tabBarList = [searchNVC, shoppingCartNVC, profileVC, historyNVC, favouritesNVC]
         
         viewControllers = tabBarList
 
     }
 
+    func setupNavigationController(vc: UIViewController) -> UINavigationController{
+        let nvc = UINavigationController(rootViewController: vc)
+        nvc.navigationBar.topItem?.title = "eShop"
+        nvc.navigationBar.isTranslucent = false
+        nvc.navigationBar.tintColor = .white
+        nvc.navigationBar.barTintColor = UIColor(red:0.15, green:0.73, blue:0.60, alpha:1.0)
+        return nvc
+    }
+    
 }

@@ -32,6 +32,10 @@ class ShoppingCartViewModel {
         return total
     }
     
+    func emptyItems(){
+        items = [ItemModel]()
+    }
+    
     func numberOfItems() -> Int {
         return items?.count ?? 0
     }

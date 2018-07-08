@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HistoryViewController" customModule="Shop" customModuleProvider="target">
             <connections>
+                <outlet property="purchasesList" destination="fjH-5b-a3N" id="f3G-oZ-btj"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -20,15 +21,18 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="History" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hbD-Sd-HE3">
-                    <rect key="frame" x="141" y="153" width="55" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fjH-5b-a3N">
+                    <rect key="frame" x="0.0" y="10" width="375" height="667"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </tableView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="fjH-5b-a3N" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" id="6XF-fg-trU"/>
+                <constraint firstItem="fjH-5b-a3N" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="c7o-6B-b6c"/>
+                <constraint firstItem="fjH-5b-a3N" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="iPd-pq-UJR"/>
+                <constraint firstItem="fjH-5b-a3N" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="pQt-7B-RsI"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
         </view>
     </objects>

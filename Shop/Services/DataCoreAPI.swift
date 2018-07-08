@@ -66,4 +66,14 @@ class DataCoreAPI:RestAPI{
             completion(nil)
         }
     }
+    
+    func fetchHistory(completion: @escaping (([Purchase]?) -> Void))  {
+
+        if let history = Purchase.all(){
+            completion(history as? [Purchase])
+        }
+        else{
+            completion(nil)
+        }
+    }
 }

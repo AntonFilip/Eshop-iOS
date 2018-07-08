@@ -52,5 +52,10 @@ class CombinedMovieAPI:RestAPI{
         let api = DataCoreAPI()
         api.fetchFavourites(completion: completion)
     }
+    
+    func fetchHistory(completion: @escaping (([Purchase]?) -> Void))  {
+        let api = DataCoreAPI()
+        api.fetchHistory(completion: completion)
+    }
 }
 
