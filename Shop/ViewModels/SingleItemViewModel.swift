@@ -3,6 +3,7 @@
 //
 
 import Foundation
+import AERecord
 
 protocol SingleItemViewModelType {
     var item: ItemModel {get}
@@ -38,6 +39,13 @@ class SingleItemViewModel:NSObject, SingleItemViewModelType{
     
     var itemId: String {
         return item.id
+    }
+    
+    func toggleIsFavourite() {
+        print(item.isFavourite)
+        item.isFavourite = item.isFavourite ? false : true
+        try? AERecord.Context.main.save()
+        print(item.isFavourite)
     }
     
     func fetchItemDetails(){

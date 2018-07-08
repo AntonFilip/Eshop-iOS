@@ -40,6 +40,11 @@ class FavouritesViewController: UIViewController {
         self.viewModel.viewDelegate = self
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.viewModel.fetchItems()
+        tableView.reloadData()
+    }
+    
     //MARK:- animation methods
     func animateTable() {
         let cells = tableView.visibleCells

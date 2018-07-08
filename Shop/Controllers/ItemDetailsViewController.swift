@@ -28,6 +28,11 @@ class ItemDetailsViewController: UIViewController{
         self.init()
         self.viewModel = viewModel
         self.viewModel.viewDelegate = self
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "heart"), style: .done, target: self, action: #selector(toggleFavourites))
+    }
+    
+    @objc func toggleFavourites() {
+        viewModel.toggleIsFavourite()
     }
     
     override func viewDidLoad() {
