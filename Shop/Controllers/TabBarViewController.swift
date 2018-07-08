@@ -34,8 +34,12 @@ class TabBarViewController: UITabBarController {
         let favouritesVM = FavouritesViewModel(service: CombinedMovieAPI())
         let favouritesVC = FavouritesViewController(viewModel: favouritesVM)
         favouritesVC.tabBarItem = UITabBarItem(title: "Favourites", image: UIImage(named: "heart"), tag: 4)
+        let favouritesNVC = UINavigationController(rootViewController: favouritesVC)
+        favouritesNVC.navigationBar.isTranslucent = false
+        favouritesNVC.navigationBar.tintColor = .white
+        favouritesNVC.navigationBar.barTintColor = UIColor(red:0.15, green:0.73, blue:0.60, alpha:1.0)
         
-        let tabBarList = [searchNVC, shoppingCartVC, profileVC, historyVC, favouritesVC]
+        let tabBarList = [searchNVC, shoppingCartVC, profileVC, historyVC, favouritesNVC]
         
         viewControllers = tabBarList
 
