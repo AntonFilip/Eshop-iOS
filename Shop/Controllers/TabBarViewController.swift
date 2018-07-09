@@ -43,6 +43,7 @@ class TabBarViewController: UITabBarController {
 
     func setupNavigationController(vc: UIViewController) -> UINavigationController{
         let nvc = UINavigationController(rootViewController: vc)
+        nvc.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
         nvc.navigationBar.topItem?.title = "eShop"
         nvc.navigationBar.isTranslucent = false
         nvc.navigationBar.tintColor = .white

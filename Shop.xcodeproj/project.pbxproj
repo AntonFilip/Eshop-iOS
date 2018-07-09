@@ -25,6 +25,8 @@
 		6BF1094620F200D7005FDF1B /* Purchase+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF1094420F200D7005FDF1B /* Purchase+CoreDataProperties.swift */; };
 		6BF1094720F200D7005FDF1B /* Purchase+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF1094520F200D7005FDF1B /* Purchase+CoreDataClass.swift */; };
 		6BF1094920F20B63005FDF1B /* FavouritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF1094820F20B63005FDF1B /* FavouritesViewModel.swift */; };
+		6BF1094F20F35AE1005FDF1B /* DialogHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF1094E20F35AE1005FDF1B /* DialogHelper.swift */; };
+		6BF1097620F35B25005FDF1B /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF1097520F35B24005FDF1B /* HistoryViewModel.swift */; };
 		A51DB14620A8873700230295 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51DB14520A8873700230295 /* AppDelegate.swift */; };
 		A51DB14D20A8873700230295 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A51DB14C20A8873700230295 /* Assets.xcassets */; };
 		A51DB15020A8873700230295 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A51DB14E20A8873700230295 /* LaunchScreen.storyboard */; };
@@ -66,6 +68,8 @@
 		6BF1094420F200D7005FDF1B /* Purchase+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Purchase+CoreDataProperties.swift"; path = "/Users/lbunicic/Developer/iOS_Vjestina/Eshop/Eshop/Shop/Models/Purchase+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		6BF1094520F200D7005FDF1B /* Purchase+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Purchase+CoreDataClass.swift"; path = "/Users/lbunicic/Developer/iOS_Vjestina/Eshop/Eshop/Shop/Models/Purchase+CoreDataClass.swift"; sourceTree = "<absolute>"; };
 		6BF1094820F20B63005FDF1B /* FavouritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesViewModel.swift; sourceTree = "<group>"; };
+		6BF1094E20F35AE1005FDF1B /* DialogHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DialogHelper.swift; path = Shop/Helpers/DialogHelper.swift; sourceTree = "<group>"; };
+		6BF1097520F35B24005FDF1B /* HistoryViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HistoryViewModel.swift; path = Shop/ViewModels/HistoryViewModel.swift; sourceTree = "<group>"; };
 		A51DB14220A8873700230295 /* Shop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A51DB14520A8873700230295 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A51DB14C20A8873700230295 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -107,6 +111,8 @@
 		A51DB13920A8873700230295 = {
 			isa = PBXGroup;
 			children = (
+				6BF1097520F35B24005FDF1B /* HistoryViewModel.swift */,
+				6BF1094E20F35AE1005FDF1B /* DialogHelper.swift */,
 				A51DB14420A8873700230295 /* Shop */,
 				A51DB14320A8873700230295 /* Products */,
 				C6B6E37E7A1F080D4BB70F88 /* Pods */,
@@ -380,7 +386,9 @@
 				6BF1094320F20088005FDF1B /* ItemModel+CoreDataClass.swift in Sources */,
 				A51DB14620A8873700230295 /* AppDelegate.swift in Sources */,
 				6BF1094220F20088005FDF1B /* ItemModel+CoreDataProperties.swift in Sources */,
+				6BF1094F20F35AE1005FDF1B /* DialogHelper.swift in Sources */,
 				6BF1093A20EE1BB1005FDF1B /* FavouritesViewController.swift in Sources */,
+				6BF1097620F35B25005FDF1B /* HistoryViewModel.swift in Sources */,
 				A5EADB8120C928A500CB90E1 /* Model.xcdatamodeld in Sources */,
 				A51DB15D20A88A2600230295 /* SearchItemViewController.swift in Sources */,
 				A5EA427820A98AF30086A6E6 /* ImageDetailViewController.swift in Sources */,

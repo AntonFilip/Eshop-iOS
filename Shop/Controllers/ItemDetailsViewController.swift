@@ -51,6 +51,8 @@ class ItemDetailsViewController: UIViewController{
         if (!showBuy){
             addToCart.isHidden = true
         }
+        
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
         self.navigationItem.title = "Product information"
         self.navigationController?.navigationBar.titleTextAttributes
         itemImage.isUserInteractionEnabled = true
