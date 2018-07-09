@@ -35,11 +35,8 @@ class ItemDetailsViewController: UIViewController{
         self.showBuy = showBuy
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "heart"), style: .done, target: self, action: #selector(toggleFavourites))
-        if(viewModel.item.isFavourite) {
-            self.navigationItem.rightBarButtonItem?.tintColor = UIColor.white.withAlphaComponent(1)
-        } else {
-            self.navigationItem.rightBarButtonItem?.tintColor = UIColor.white.withAlphaComponent(0.15)
-        }
+        
+        navigationItem.rightBarButtonItem?.tintColor =  viewModel.item.isFavourite ? UIColor.white.withAlphaComponent(1): UIColor.white.withAlphaComponent(0.15)
     }
     
     @objc func toggleFavourites() {
