@@ -31,16 +31,28 @@ class ItemDetailsViewController: UIViewController{
         self.init()
         self.viewModel = viewModel
         self.viewModel.viewDelegate = self
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "heart"), style: .done, target: self, action: #selector(toggleFavourites))
         self.shoppingCartVC = shoppingCartVC
         self.showBuy = showBuy
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "heart"), style: .done, target: self, action: #selector(toggleFavourites))
+        if(viewModel.item.isFavourite) {
+            self.navigationItem.rightBarButtonItem?.tintColor = UIColor.white.withAlphaComponent(1)
+        } else {
+            self.navigationItem.rightBarButtonItem?.tintColor = UIColor.white.withAlphaComponent(0.15)
+        }
     }
     
     @objc func toggleFavourites() {
         if (viewModel.toggleIsFavourite()){
+            UIView.animate(withDuration: 1) {
+                self.navigationItem.rightBarButtonItem?.tintColor = UIColor.white.withAlphaComponent(1)
+            }
             DialogHelper.showToast(controller: self, message: "Item added to favourites", seconds: 1.0)
         }
         else {
+            UIView.animate(withDuration: 1) {
+                self.navigationItem.rightBarButtonItem?.tintColor = UIColor.white.withAlphaComponent(0.15)
+            }
             DialogHelper.showToast(controller: self, message: "Item removed from favourites", seconds: 1.0)
         }
     }
