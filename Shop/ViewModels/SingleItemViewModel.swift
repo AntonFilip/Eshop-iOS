@@ -41,11 +41,12 @@ class SingleItemViewModel:NSObject, SingleItemViewModelType{
         return item.id
     }
     
-    func toggleIsFavourite() {
+    func toggleIsFavourite() -> Bool{
         print(item.isFavourite)
         item.isFavourite = item.isFavourite ? false : true
         try? AERecord.Context.main.save()
         print(item.isFavourite)
+        return item.isFavourite
     }
     
     var ratingUrl: String {

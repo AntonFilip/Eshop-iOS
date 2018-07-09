@@ -37,7 +37,12 @@ class ItemDetailsViewController: UIViewController{
     }
     
     @objc func toggleFavourites() {
-        viewModel.toggleIsFavourite()
+        if (viewModel.toggleIsFavourite()){
+            DialogHelper.showToast(controller: self, message: "Item added to favourites", seconds: 1.0)
+        }
+        else {
+            DialogHelper.showToast(controller: self, message: "Item removed from favourites", seconds: 1.0)
+        }
     }
     
     override func viewDidLoad() {
